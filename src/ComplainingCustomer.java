@@ -8,7 +8,7 @@ public class ComplainingCustomer extends UnhappyCustomer {
 	
 	//Time spent waiting in the queue, measured in ticks 
 	private int timeSpentQueueing;
-	//The cutoff point where the customer becomes irritated and acts accordingly
+	//The cutoff point where the customer takes twice as long to serve
 	private static final int PATIENCE_LIMIT = 48;  
 
 	public ComplainingCustomer() {
@@ -20,7 +20,7 @@ public class ComplainingCustomer extends UnhappyCustomer {
 		this.timeSpentQueueing++;
 	}
 	
-	//If the time spent queueing is greater than the patience limit, take appropriate action
+	//If the time spent queueing is greater than the patience limit, double serving time
 	public void getUnhappyIfQueuedForTooLong() {
 		if (this.timeSpentQueueing >= PATIENCE_LIMIT) {
 			int serveTimeDoubled = getServeTime() * 2;
