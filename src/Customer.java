@@ -11,14 +11,14 @@ public class Customer implements Person {
 	private int serveTime;
 	
 	public Customer() {
-		setServetime();
+		setServeTime();
 	}
 	
 	/**
 	 * Gives the amount of time it takes to serve a customer
 	 * a random number between 18 and 30
 	 */
-	public void setServetime() {
+	public void setServeTime() {
 		Random rand = new Random(42);
 		this.serveTime = rand.nextInt(12) + 18; 
 	}
