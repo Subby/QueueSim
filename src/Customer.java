@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Customer implements Person {
 	
+	//The amount of time (ticks) it takes to serve a customer
 	@SuppressWarnings("unused")
 	private int serveTime;
 	
