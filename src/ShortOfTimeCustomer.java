@@ -16,12 +16,12 @@ public class ShortOfTimeCustomer extends UnhappyCustomer{
 	}
 	
 	//Increment the time spent in the queue by one tick 
-	void incrementTimeSpentQueueing() {
+	public void incrementTimeSpentQueueing() {
 		this.timeSpentQueueing++;
 	}
 	
 	//Remove the object from the queue if patience limit is reached
-	void getUnhappyIfQueuedForTooLong() {
+	public void getUnhappyIfQueuedForTooLong() {
 		if (this.timeSpentQueueing >= PATIENCE_LIMIT) {
 			// TODO Method that removes the customer from the queue
 		}
