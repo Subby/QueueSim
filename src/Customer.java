@@ -8,20 +8,27 @@ import java.util.Random;
 public class Customer implements Person {
 	
 	//The amount of time (ticks) it takes to serve a customer
-	@SuppressWarnings("unused")
 	private int serveTime;
 	
 	public Customer() {
-		setServeTime();
+		initialiseServeTime();
 	}
 	
 	/**
 	 * Gives the amount of time it takes to serve a customer
 	 * a random number between 18 and 30
 	 */
-	public void setServeTime() {
+	public void initialiseServeTime() {
 		Random rand = new Random(42);
 		this.serveTime = rand.nextInt(12) + 18; 
+	}
+	
+	protected void changeServeTime(int newServeTime) {
+		serveTime = newServeTime; 
+	}
+	
+	public int getServeTime() {
+		return this.serveTime;
 	}
 
 }
