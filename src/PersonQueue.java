@@ -13,12 +13,16 @@ public class PersonQueue implements Queue {
 	/**
 	 * Holds all the different people in the queue.
 	 */
-	private LinkedList<Person> queue = new LinkedList<Person>();
+	private LinkedList<Person> queue;
+	
+	public PersonQueue() {
+		queue = new LinkedList<Person>();
+	}
 	
 
 	@Override
 	public boolean addPerson(Person person) {
-		if(queue == null) {
+		if(queue.isEmpty() || queue == null) {
 			return false;
 		}
 		queue.add(person);
