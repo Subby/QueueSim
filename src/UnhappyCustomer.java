@@ -9,6 +9,6 @@ public abstract class UnhappyCustomer extends Customer {
 	abstract void incrementTimeSpentQueueing();
 	
 	//If the time spent queueing is greater than the patience limit, take appropriate action 
-	abstract void getUnhappyIfQueuedForTooLong(); 
+	abstract void queuedForTooLong(); 
 		
 }

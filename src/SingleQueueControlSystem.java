@@ -1,27 +1,39 @@
+/**
+ * System that handles the generation of queues, servers, customers and the interaction between them for the simlulation 
+ * @author Ben Lawton 
+ *
+ */
 
 public class SingleQueueControlSystem implements QueueControlSystem {
 	
+	//The single queue in the simulation 
 	private Queue queue; 
 	
+	//A collection of all of the servers in the simulation 
 	private ServerCollection servers; 
 	
+	//The PersonFactory that generates the customers 
 	private PersonFactory personFactory;
 	
+	//(Singleton pattern) The only instance of the class 
 	private static SingleQueueControlSystem instance = null; 
 	
 	private SingleQueueControlSystem() {}
 	
+	//Instantiates the object if it hasn't already been instantiated. Otherwise just returns the lone object. 
 	public static SingleQueueControlSystem getInstance() {
 		if (instance == null) {
 			instance = new SingleQueueControlSystem();
 		}
 		return instance; 
 	}
-
+	
+	//Generates the queue for the simulation  
 	public void generateQueueLayout() {
 		queue = new PersonQueue();
 	}
 	
+	//Generates the servers for the simulation 
 	public void generateServers(int numServers) {
 		servers = ServerCollection.getInstance();
 		for (int i = 0; i < numServers; i++) {
@@ -29,7 +41,8 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 			servers.addServer(server);
 		}
 	}
-
+	
+	//If a customer is generated, adds it to the queue 
 	public void customerArrival() {
 		personFactory = PersonFactory.getInstance(); 
 		Person newPerson = personFactory.generatePerson();
@@ -37,18 +50,26 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 			queue.addPerson(newPerson);
 		}
 	}
-
+	
+	//Allocate a customer to all available servers 
 	public void allocateCustomersToServers() {
 		for (Server server : servers.showAvailableServers()) {
 			server.setCurrentCustomer(queue.getHeadOfQueue());
 			queue.removeHeadOfQueue();
+			server.setFree(false);
 		}
-		
 	}
-
+	
+	//Remove customers from the servers if their serve time has bee exceeded 
 	public void removeCustomersFromServers() {
-		// TODO Auto-generated method stub
-		
+		for (Server server : servers.getServers()) {
+			if (server.isFree() == false) {
+				Person currentCustomer = server.getCurrentCustomer();
+				if (currentCustomer.getServeTime() >= server.getTimeSpentServing()) {
+					server.finishWithCustomer();
+				}
+			}
+		}
 	}
 
 }

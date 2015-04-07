@@ -2,22 +2,24 @@
 
 /**
  * An abstract class to represent a Server.
- * @author Denver
- *
+ * @author Denver Fernandes
+ * @author Ben Lawton
  */
 public abstract class Server {
-	/**
-	 * The current customer the server is serving.
-	 */
+	
+	//The current customer the server is serving.
 	private Person currentCustomer;
-	/**
-	 * A flag to check whether the server is free.
-	 */
+
+	//A flag to check whether the server is free.
 	private boolean isFree;
+	
+	//Time spent serving the current customer 
+	private int timeSpentServing;
 	
 	public Server() {
 		currentCustomer = null;
 		isFree = true;
+		timeSpentServing = 0;
 	}
 	
 	/**
@@ -27,21 +29,18 @@ public abstract class Server {
 	public void finishWithCustomer() {
 		currentCustomer = null;
 		isFree = true;
+		timeSpentServing = 0;
 	}
 	
 	/**
-	 * Servers the customer.
+	 * Serves the customer.
 	 * @param customer the customer to serve
 	 * @return whether the operation is successful
 	 */
-	public boolean serveCustomer(Customer customer) {
-		if(currentCustomer != null) {
-			return false;
+	public void serveCustomer(Customer customer) {
+		if(isFree == true) {
+			timeSpentServing++;
 		}
-		if(!isFree) {
-			return false;
-		}
-		return true;
 	}
 	
 	/**
@@ -82,6 +81,10 @@ public abstract class Server {
 	 */
 	public void setFree(boolean isFree) {
 		this.isFree = isFree;
+	}
+	
+	public int getTimeSpentServing() {
+		return this.timeSpentServing;
 	}
 
 }

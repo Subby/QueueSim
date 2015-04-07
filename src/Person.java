@@ -4,5 +4,8 @@
  */
 
 public interface Person {
+	
 	public void initialiseServeTime();
+	
+	public int getServeTime();
 }

@@ -21,7 +21,7 @@ public class ShortOfTimeCustomer extends UnhappyCustomer{
 	}
 	
 	//Remove the object from the queue if patience limit is reached
-	public void getUnhappyIfQueuedForTooLong() {
+	public void queuedForTooLong() {
 		if (this.timeSpentQueueing >= PATIENCE_LIMIT) {
 			// TODO Method that removes the customer from the queue
 		}
