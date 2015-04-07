@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Interface that models a queueing system
  * Controls the generation of Queues and Servers for the simulation, and
@@ -25,5 +27,8 @@ public interface QueueControlSystem {
 	
 	//When their serving times have been reached, removes customers from servers and sets the servers' availability to free
 	public void removeCustomersFromServers();
+	
+	//Returns all of the queues in the system 
+	public ArrayList<Queue> getQueues();
 	
 }

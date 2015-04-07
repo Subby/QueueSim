@@ -26,6 +26,10 @@ public class PersonQueue implements Queue {
 			queue.add(person);
 		}
 	}
+	
+	public LinkedList<Person> getQueue() {
+		return queue;
+	}
 
 	@Override
 	public int getLength() {

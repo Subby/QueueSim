@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * System that handles the generation of queues, servers, customers and the interaction between them for the simlulation 
  * @author Ben Lawton 
@@ -70,6 +72,12 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 				}
 			}
 		}
+	}
+
+	public ArrayList<Queue> getQueues() {
+		ArrayList<Queue> queueList = new ArrayList<Queue>();
+		queueList.add(queue);
+		return queueList; 
 	}
 
 }

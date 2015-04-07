@@ -21,7 +21,15 @@ public class ComplainingCustomer extends UnhappyCustomer {
 	}
 	
 	//If the time spent queueing is greater than the patience limit, double serving time
-	public void queuedForTooLong() {
+	public boolean queuedForTooLong() {
+		boolean unhappy = false;
+		if (timeSpentQueueing >= PATIENCE_LIMIT) {
+			unhappy = true;
+		}
+		return unhappy; 
+	}
+	
+	public void doubleServeTime() {
 		if (this.timeSpentQueueing >= PATIENCE_LIMIT) {
 			int serveTimeDoubled = getServeTime() * 2;
 			changeServeTime(serveTimeDoubled);
