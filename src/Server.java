@@ -9,7 +9,7 @@ public abstract class Server {
 	/**
 	 * The current customer the server is serving.
 	 */
-	private Customer currentCustomer;
+	private Person currentCustomer;
 	/**
 	 * A flag to check whether the server is free.
 	 */
@@ -56,7 +56,7 @@ public abstract class Server {
 	 * Gets the current customer being server.
 	 * @return the current customer being server
 	 */
-	public Customer getCurrentCustomer() {
+	public Person getCurrentCustomer() {
 		return currentCustomer;
 	}
 	
@@ -64,7 +64,7 @@ public abstract class Server {
 	 * Sets the current customer being served.
 	 * @param currentCustomer the customer being served.
 	 */
-	public void setCurrentCustomer(Customer currentCustomer) {
+	public void setCurrentCustomer(Person currentCustomer) {
 		this.currentCustomer = currentCustomer;
 	}
 	

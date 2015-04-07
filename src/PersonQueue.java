@@ -21,12 +21,10 @@ public class PersonQueue implements Queue {
 	
 
 	@Override
-	public boolean addPerson(Person person) {
-		if(queue.isEmpty() || queue == null) {
-			return false;
+	public void addPerson(Person person) {
+		if(queue != null) {
+			queue.add(person);
 		}
-		queue.add(person);
-		return true;
 	}
 
 	@Override
@@ -41,6 +39,10 @@ public class PersonQueue implements Queue {
 		}
 		queue.removeFirst();
 		return true;
+	}
+	
+	public Person getHeadOfQueue() {
+		return queue.getFirst();
 	}
 	
 }

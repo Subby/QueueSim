@@ -4,22 +4,18 @@ import java.util.ArrayList;
 /**
  * Represents a collection of many Servers.
  * @author Denver Fernandes
- *
+ * @author Ben Lawton 
  */
 public class ServerCollection {
 	
-	/**
-	 * All the different servers in this.
-	 */
-	private ArrayList<Server> servers = new ArrayList<Server>();
+	//A collection of all of the different servers.
+	private ArrayList<Server> servers;
 	
-	/**
-	 * The instance.
-	 */
+	//Single instance of the class 
 	private static ServerCollection instance = null;
 	
-	protected ServerCollection() {
-		//To allow only a single point of access, the constructor is protected.
+	private ServerCollection() {
+		servers = new ArrayList<Server>();
 	}
 	
 	/**
@@ -56,10 +52,9 @@ public class ServerCollection {
 	}
 
 	/**
-	 * Sets the servers in this collection.
-	 * @param servers the servers in this colleciton
+	 * Adds a server to the collection 
 	 */
-	public void setServers(ArrayList<Server> servers) {
-		this.servers = servers;
+	public void addServer(Server server) {
+		this.servers.add(server);
 	}
 }

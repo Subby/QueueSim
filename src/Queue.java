@@ -14,7 +14,7 @@ public interface Queue {
 	 * @param person the person to add
 	 * @return whether the operation is successful
 	 */
-	public boolean addPerson(Person person);
+	public void addPerson(Person person);
 	
 	/**
 	 * Gets the length of the queue.
@@ -27,4 +27,6 @@ public interface Queue {
 	 * @return whether the operation is successful
 	 */
 	public boolean removeHeadOfQueue();
+	
+	public Person getHeadOfQueue();
 }
