@@ -5,7 +5,25 @@
  */
 
 public class ComplainingCustomerObserver implements UnHappyCustomerObserver {
-
+	
+	//(Singleton pattern) variable to point to the single instance of the class 
+	private static ComplainingCustomerObserver instance; 
+	
+	//Constructor kept private so class can't be instantiated at will
+	private ComplainingCustomerObserver() {}
+	
+	//Used to return the single instance of the class 
+	public static ComplainingCustomerObserver getInstance() {
+		if (instance == null) {
+			instance = new ComplainingCustomerObserver();
+		}
+		return instance; 
+	}
+	
+	/**
+	 * Iterates all of the ComplainingCustomer instances in all of the queues in the simulation, increments their time spent in the queue by 1
+	 * and then doubles their ServeTime if they've been waiting in the queue for longer than their patience limit 
+	 */
 	public void actOnInconveniencedCustomers(QueueControlSystem queueSystem) {
 		for (Queue queue : queueSystem.getQueues()) {
 			for (Person person : queue.getQueue()) {

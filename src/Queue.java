@@ -33,4 +33,6 @@ public interface Queue {
 	public Person getHeadOfQueue();
 	
 	public LinkedList<Person> getQueue();
+
+	public void removePerson (Person person);
 }

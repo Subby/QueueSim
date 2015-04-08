@@ -30,6 +30,10 @@ public class PersonQueue implements Queue {
 	public LinkedList<Person> getQueue() {
 		return queue;
 	}
+	
+	public void removePerson(Person person) {
+		queue.remove(person);
+	}
 
 	@Override
 	public int getLength() {
