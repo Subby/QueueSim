@@ -16,6 +16,9 @@ public abstract class Server {
 	//Time spent serving the current customer 
 	private int timeSpentServing;
 	
+	//If in a multi-queue system, the queue allocated to the server
+	private Queue allocatedQueue;
+	
 	public Server() {
 		currentCustomer = null;
 		isFree = true;
@@ -85,6 +88,14 @@ public abstract class Server {
 	
 	public int getTimeSpentServing() {
 		return this.timeSpentServing;
+	}
+	
+	public Queue getAllocatedQueue() {
+		return this.allocatedQueue;
+	}
+	
+	public void setAllocatedQueue(Queue queue) {
+		this.allocatedQueue = queue; 
 	}
 
 }

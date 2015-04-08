@@ -52,8 +52,8 @@ public class QueueCollection {
 		return shortestQueue;
 	}
 	
-	public void setQueues(ArrayList<Queue> queues) {
-		this.queues = queues;
+	public void addQueue(Queue queue) {
+		queues.add(queue);
 	}
 	
 }

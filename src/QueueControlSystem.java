@@ -10,11 +10,8 @@ import java.util.ArrayList;
 
 public interface QueueControlSystem {
 	
-	//Generates the queues for the simulation 
-	public void generateQueueLayout();
-	
-	//Generates the servers for the simulation 
-	public void generateServers(int numServers);
+	//Generates the queues and servers for the simulation 
+	public void generateQueuesAndServers(int numServers);
 	
 	/**
 	 * Calls the PersonFactory generatePerson() method

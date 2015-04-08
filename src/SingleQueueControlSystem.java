@@ -18,7 +18,7 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	private PersonFactory personFactory;
 	
 	//(Singleton pattern) The only instance of the class 
-	private static SingleQueueControlSystem instance = null; 
+	private static SingleQueueControlSystem instance; 
 	
 	private SingleQueueControlSystem() {}
 	
@@ -30,13 +30,9 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		return instance; 
 	}
 	
-	//Generates the queue for the simulation  
-	public void generateQueueLayout() {
-		queue = new PersonQueue();
-	}
-	
 	//Generates the servers for the simulation 
-	public void generateServers(int numServers) {
+	public void generateQueuesAndServers(int numServers) {
+		queue = new PersonQueue();
 		servers = ServerCollection.getInstance();
 		for (int i = 0; i < numServers; i++) {
 			Server server = new HumanServer();
