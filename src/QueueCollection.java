@@ -35,6 +35,10 @@ public class QueueCollection {
 		return instance;
 	}
 	
+	public ArrayList<Queue> getQueues() {
+		return queues;
+	}
+	
 	/**
 	 * Returns the shortest queue.
 	 * @return the shortest queue

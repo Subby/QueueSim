@@ -1,10 +1,10 @@
-import java.util.ArrayList;
-
 /**
- * System that handles the generation of queues, servers, customers and the interaction between them for the simlulation 
+ * Class that handles the generation of queues, servers, customers and the interaction between them for the simlulation of a single queue system 
  * @author Ben Lawton 
  *
  */
+
+import java.util.ArrayList;
 
 public class SingleQueueControlSystem implements QueueControlSystem {
 	
@@ -59,7 +59,7 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	}
 	
 	//Remove customers from the servers if their serve time has bee exceeded 
-	public void removeCustomersFromServers() {
+	public void removeFinishedCustomersFromServers() {
 		for (Server server : servers.getServers()) {
 			if (server.isFree() == false) {
 				Person currentCustomer = server.getCurrentCustomer();
