@@ -1,6 +1,7 @@
 /**
  * Class that handles the generation of queues, servers, customers and the interaction between them for the simlulation of a multi queue system
  * @author Ben Lawton 
+ * @author Denver Fernandes
  */
 
 import java.util.ArrayList;
@@ -16,6 +17,12 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	
 	private static MultiQueueControlSystem instance; 
 
+	public static MultiQueueControlSystem getInstance() {
+		if(instance == null) {
+			instance = new MultiQueueControlSystem();
+		}
+		return instance;
+	}
 	public void generateQueuesAndServers(int numServers) {
 		servers = ServerCollection.getInstance();
 		queues = QueueCollection.getInstance();
