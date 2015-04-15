@@ -42,6 +42,7 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		if (newPerson != null) {
 			Queue shortestQueue = queues.showShortestQueue();
 			shortestQueue.addPerson(newPerson);
+			Stats.CUSTOMERS_GENERATED++;
 		}
 	}
 

@@ -46,6 +46,7 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		Person newPerson = personFactory.generatePerson();
 		if (newPerson != null) {
 			queue.addPerson(newPerson);
+			Stats.CUSTOMERS_GENERATED++;
 		}
 	}
 	
