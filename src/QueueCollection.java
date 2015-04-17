@@ -44,13 +44,14 @@ public class QueueCollection {
 	 * @return the shortest queue
 	 */
 	public Queue showShortestQueue() {
-		/*TODO: Implement getting this method more efficiently. 
-		The queue that is currently used as shortest by default may be null.*/
-		int shortestLength = queues.get(0).getLength();
-		Queue shortestQueue = null;
-		for(Queue currentQueue : queues) {
-			if(currentQueue.getLength() < shortestLength) {
-				shortestQueue = currentQueue;
+		//TODO: Implement error handling for when the collection is empty 
+		Queue shortestQueue = queues.get(0);
+		int shortestQueueLength = shortestQueue.getLength();
+		if (shortestQueue != null) {
+			for(Queue currentQueue : queues) {
+				if(currentQueue.getLength() < shortestQueueLength) {
+					shortestQueue = currentQueue;
+				}
 			}
 		}
 		return shortestQueue;
