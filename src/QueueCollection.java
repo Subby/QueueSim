@@ -20,8 +20,8 @@ public class QueueCollection {
 	 */
 	public static QueueCollection instance = null;
 	
-	protected QueueCollection() {
-		//To allow only a single point of access, the constructor is protected.
+	private QueueCollection() {
+		queues = new ArrayList<Queue>();
 	}
 	
 	/**
