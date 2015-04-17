@@ -33,6 +33,7 @@ public abstract class Server {
 		currentCustomer = null;
 		isFree = true;
 		timeSpentServing = 0;
+		Stats.CUSTOMERS_SERVED++;
 	}
 	
 	/**

@@ -30,6 +30,7 @@ public class ShortOfTimeCustomerObserver implements UnHappyCustomerObserver {
 					((ShortOfTimeCustomer) person).incrementTimeSpentQueueing();
 					if (((ShortOfTimeCustomer) person).queuedForTooLong() == true) {
 						queue.removePerson(person);
+						Stats.CUSTOMERS_LEFT_NOT_SERVED++;
 					}
 				}
 			}
