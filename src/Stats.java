@@ -17,8 +17,7 @@ public class Stats {
 	public static Stats instance = null;
 	
 	private Stats() {
-		//To allow only a single point of access, the constructor is protected.
-
+		//To allow only a single point of access, the constructor is private.
 	}
 	
 	public static Stats getInstance() {
