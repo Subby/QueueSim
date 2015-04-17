@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Simulator {
-	//TODO: Adjust tick length properly
-	public static long TICK = 30;
+	
+	public static long TICK = 2;
 	
 	public static void main(String[] args) {
 		MultiQueueControlSystem.getInstance().generateQueuesAndServers(3);

@@ -11,10 +11,12 @@ public class Stats {
 
 	public static int CUSTOMERS_SERVED = 0;
 	public static int CUSTOMERS_GENERATED = 0;
+	public static int CUSTOMERS_LEFT_NOT_SERVED = 0;
+	public static int TOTAL_WAITING_TIME = 0;
 	
 	public static Stats instance = null;
 	
-	protected Stats() {
+	private Stats() {
 		//To allow only a single point of access, the constructor is protected.
 
 	}
@@ -26,9 +28,8 @@ public class Stats {
 		return instance;
 	}
 	
-	public int calcAvgWaitingTime() {
-		//TODO: Finish this method when time scale has been adjusted correctly
-		return 0;
+	public double calcAvgWaitingTime() {
+		return (TOTAL_WAITING_TIME / CUSTOMERS_GENERATED);
 	}
 	
 	public int calcNumCustomersServed() {
@@ -39,12 +40,17 @@ public class Stats {
 		return (CUSTOMERS_SERVED / CUSTOMERS_GENERATED);
 	}
 	
+	public int calcCustomersWithoutBeingServed() {
+		return CUSTOMERS_LEFT_NOT_SERVED;
+	}
+	
 	public void outputToFile() throws FileNotFoundException {
 		PrintWriter output = new PrintWriter("output.txt");
 		StringBuilder strBlr = new StringBuilder();
 		strBlr.append("Average waiting time: " + calcAvgWaitingTime() + "\n");
 		strBlr.append("Number of customers served: " + calcNumCustomersServed() + "\n");
-		strBlr.append("Number of customers served: " + calcFractionServed() + "\n");
+		strBlr.append("Fraction of customers served: " + calcFractionServed() + "\n");
+		strBlr.append("Number of customers who left without being served: " + calcCustomersWithoutBeingServed() + "\n");
 		output.write(strBlr.toString());
 		output.close();
 	}
