@@ -46,8 +46,8 @@ public class QueueCollection {
 	public Queue showShortestQueue() {
 		//TODO: Implement error handling for when the collection is empty 
 		Queue shortestQueue = queues.get(0);
-		int shortestQueueLength = shortestQueue.getLength();
 		if (shortestQueue != null) {
+			int shortestQueueLength = shortestQueue.getLength();
 			for(Queue currentQueue : queues) {
 				if(currentQueue.getLength() < shortestQueueLength) {
 					shortestQueue = currentQueue;
