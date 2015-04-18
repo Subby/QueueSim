@@ -23,7 +23,7 @@ public final class PersonFactory {
 	}
 	
 	private int generateRandomNumber() {
-		Random rand = new Random();
+		Random rand = new Random(42);
 		return rand.nextInt(101);
 	}
 	

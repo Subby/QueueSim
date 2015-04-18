@@ -11,22 +11,8 @@ public class ServerCollection {
 	//A collection of all of the different servers.
 	private ArrayList<Server> servers;
 	
-	//Single instance of the class 
-	private static ServerCollection instance = null;
-	
-	private ServerCollection() {
+	public ServerCollection() {
 		servers = new ArrayList<Server>();
-	}
-	
-	/**
-	 * The object creation point.
-	 * @return the instance
-	 */
-	public static ServerCollection getInstance() {
-		if(instance == null) {
-			instance = new ServerCollection();
-		}
-		return instance;
 	}
 	
 	/**

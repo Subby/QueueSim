@@ -16,6 +16,8 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	private PersonFactory personFactory;
 	
 	private static MultiQueueControlSystem instance; 
+	
+
 
 	public static MultiQueueControlSystem getInstance() {
 		if(instance == null) {
