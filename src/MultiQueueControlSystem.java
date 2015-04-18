@@ -17,7 +17,10 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	
 	private static MultiQueueControlSystem instance; 
 	
-
+	private MultiQueueControlSystem() {
+		servers = new ServerCollection();
+		queues = new QueueCollection();
+	}
 
 	public static MultiQueueControlSystem getInstance() {
 		if(instance == null) {
@@ -26,8 +29,6 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		return instance;
 	}
 	public void generateQueuesAndServers(int numServers) {
-		servers = ServerCollection.getInstance();
-		queues = QueueCollection.getInstance();
 		for (int i = 0; i < numServers; i++) {
 			Server server = new HumanServer();
 			servers.addServer(server);

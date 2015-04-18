@@ -14,25 +14,9 @@ public class QueueCollection {
 	 * The queues contained in this collection
 	 */
 	private ArrayList<Queue> queues;
-	
-	/**
-	 * The instance
-	 */
-	public static QueueCollection instance = null;
-	
-	private QueueCollection() {
+		
+	public QueueCollection() {
 		queues = new ArrayList<Queue>();
-	}
-	
-	/**
-	 * The object creation point.
-	 * @return the instance
-	 */
-	public static QueueCollection getInstance() {
-		if(instance == null) {
-			instance = new QueueCollection();
-		}
-		return instance;
 	}
 	
 	public ArrayList<Queue> getQueues() {

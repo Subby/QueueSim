@@ -20,7 +20,10 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	//(Singleton pattern) The only instance of the class 
 	private static SingleQueueControlSystem instance; 
 	
-	private SingleQueueControlSystem() {}
+	private SingleQueueControlSystem() {
+		queue = new PersonQueue();
+		servers = new ServerCollection();
+	}
 	
 	//Instantiates the object if it hasn't already been instantiated. Otherwise just returns the lone object. 
 	public static SingleQueueControlSystem getInstance() {
@@ -32,8 +35,6 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	
 	//Generates the servers for the simulation 
 	public void generateQueuesAndServers(int numServers) {
-		queue = new PersonQueue();
-		servers = ServerCollection.getInstance();
 		for (int i = 0; i < numServers; i++) {
 			Server server = new HumanServer();
 			servers.addServer(server);
