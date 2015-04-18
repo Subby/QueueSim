@@ -27,7 +27,7 @@ public class HumanServerTest {
 		server.setCurrentCustomer(customer);
 		server.finishWithCustomer();
 		assertEquals(null, server.getCurrentCustomer());
-		assertEquals(true, server.isFree());
+		assertEquals(true, server.showAvailability());
 		assertEquals(0, server.getTimeSpentServing());
 	}
 	
@@ -36,5 +36,15 @@ public class HumanServerTest {
 		server.setCurrentCustomer(customer);
 		server.serveCustomer();
 		assertEquals(1, server.getTimeSpentServing());
+	}
+	
+	@Test
+	public void testShowAvailability() {
+		server.setFree(true);
+		server.setCurrentCustomer(null);
+		assertEquals(true, server.showAvailability());
+		server.setFree(false);
+		server.setCurrentCustomer(customer);
+		assertEquals(false, server.showAvailability());
 	}
 }

@@ -23,7 +23,7 @@ public class ServerCollection {
 	public ArrayList<Server> showAvailableServers() {
 		ArrayList<Server> localList = new ArrayList<Server>();
 		for(Server currentServer : servers) {
-			if(currentServer.isFree()) {
+			if(currentServer.showAvailability()) {
 				localList.add(currentServer);
 			}
 		}

@@ -68,7 +68,7 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	//Remove customers from the servers if their serve time has bee exceeded 
 	public void removeFinishedCustomersFromServers() {
 		for (Server server : servers.getServers()) {
-			if (server.isFree() == false) {
+			if (server.showAvailability() == false) {
 				Person currentCustomer = server.getCurrentCustomer();
 				if (currentCustomer.getServeTime() >= server.getTimeSpentServing()) {
 					server.finishWithCustomer();

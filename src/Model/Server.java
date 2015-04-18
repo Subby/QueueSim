@@ -39,11 +39,11 @@ public abstract class Server {
 	
 	/**
 	 * Serves the customer.
-	 * @param customer the customer to serve
-	 * @return whether the operation is successful
 	 */
 	public void serveCustomer() {
+		if (currentCustomer != null) {
 			timeSpentServing++;
+		}
 	}
 	
 	/**
@@ -70,13 +70,7 @@ public abstract class Server {
 		this.currentCustomer = currentCustomer;
 	}
 	
-	/**
-	 * Checks whether the server is free or not.
-	 * @return whether the server is free or not
-	 */
-	public boolean isFree() {
-		return isFree;
-	}
+	
 	
 	/**
 	 * Sets the flag to indicate whether the server is free or not.

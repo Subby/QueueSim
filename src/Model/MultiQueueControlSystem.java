@@ -66,7 +66,7 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	//Removes customers from the servers if their serve time has been met or exceeded
 	public void removeFinishedCustomersFromServers() {
 		for (Server server : servers.getServers()) {
-			if (server.isFree() == false) {
+			if (server.showAvailability() == false) {
 				Person currentCustomer = server.getCurrentCustomer();
 				if (currentCustomer.getServeTime() >= server.getTimeSpentServing()) {
 					server.finishWithCustomer();
