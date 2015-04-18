@@ -23,6 +23,7 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	private SingleQueueControlSystem() {
 		queue = new PersonQueue();
 		servers = new ServerCollection();
+		personFactory = new PersonFactory();
 	}
 	
 	//Instantiates the object if it hasn't already been instantiated. Otherwise just returns the lone object. 
@@ -43,7 +44,6 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	
 	//If a customer is generated, adds it to the queue 
 	public void customerArrival() {
-		personFactory = PersonFactory.getInstance(); 
 		Person newPerson = personFactory.generatePerson();
 		if (newPerson != null) {
 			queue.addPerson(newPerson);
@@ -53,10 +53,14 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	
 	//Allocate a customer to all available servers 
 	public void allocateCustomersToServers() {
-		for (Server server : servers.showAvailableServers()) {
-			server.setCurrentCustomer(queue.getHeadOfQueue());
-			queue.removeHeadOfQueue();
-			server.setFree(false);
+		if (servers.showAvailableServers().size() > 0) {
+			for (Server server : servers.showAvailableServers()) {
+				if (queue.getLength() > 0) {
+					server.setCurrentCustomer(queue.getHeadOfQueue());
+					queue.removeHeadOfQueue();
+					server.setFree(false);
+				}
+			}
 		}
 	}
 	

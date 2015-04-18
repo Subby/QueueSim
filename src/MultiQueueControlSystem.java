@@ -51,10 +51,14 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 
 	//Allocates a customer to an available server from their allocated queues 
 	public void allocateCustomersToServers() {
-		for (Server server : servers.showAvailableServers()) {
-			server.setCurrentCustomer(server.getAllocatedQueue().getHeadOfQueue());
-			server.getAllocatedQueue().removeHeadOfQueue();
-			server.setFree(false);
+		if (servers.showAvailableServers().size() > 0) {
+			for (Server server : servers.showAvailableServers()) {
+				if (server.getAllocatedQueue().getLength() > 0) {
+					server.setCurrentCustomer(server.getAllocatedQueue().getHeadOfQueue());
+					server.getAllocatedQueue().removeHeadOfQueue();
+					server.setFree(false);
+				}
+			}
 		}
 	}
 	

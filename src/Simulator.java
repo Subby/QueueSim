@@ -27,9 +27,9 @@ public class Simulator {
         
         ticker.scheduleAtFixedRate(new Runnable() {
         	
+    		int currentTime = 0;
+        	
 			public void run() {
-				
-				int currentTime = 0;
 				
 				if(currentTime < LENGTH_OF_SIMULATION) {
 					currentTime = currentTime + 1;
