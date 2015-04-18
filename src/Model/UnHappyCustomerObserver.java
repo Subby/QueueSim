@@ -1,3 +1,4 @@
+package Model;
 /**
  * Interface that models the Observer pattern
  * Implementing classes will look for unhappy customers in the queues, and

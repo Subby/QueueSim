@@ -1,3 +1,4 @@
+package Model;
 /**
  * The main class the runs the simulator.
  * @author Denver Fernandes

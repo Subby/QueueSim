@@ -1,3 +1,4 @@
+package Model;
 /**
  * Class that observes ComplainingCustomer objects and doubles their waiting times if they have been waiting in the queue for too long 
  * @author Ben Lawton

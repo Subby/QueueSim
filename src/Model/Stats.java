@@ -1,3 +1,4 @@
+package Model;
 /**
  * A class to handle all the statistics collection, calculation and operations.
  * @author Denver Fernandes

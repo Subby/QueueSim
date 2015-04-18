@@ -1,3 +1,4 @@
+package Model;
 /**
  * Class that handles the generation of customers based on
  * their probability of being generated

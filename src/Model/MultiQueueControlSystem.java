@@ -1,3 +1,4 @@
+package Model;
 /**
  * Class that handles the generation of queues, servers, customers and the interaction between them for the simlulation of a multi queue system
  * @author Ben Lawton 

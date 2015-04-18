@@ -1,3 +1,4 @@
+package Model;
 
 /**
  * Represents a human server.

@@ -1,3 +1,4 @@
+package Model;
 /**
  * Abstract class that provides a model for an unhappy customer 
  * @author Ben Lawton
