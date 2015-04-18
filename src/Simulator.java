@@ -17,8 +17,8 @@ public class Simulator {
 	public static void main(String[] args) {
 		
 		
-		MultiQueueControlSystem multiController = MultiQueueControlSystem.getInstance();
-		SingleQueueControlSystem singleController = SingleQueueControlSystem.getInstance();
+		final MultiQueueControlSystem multiController = MultiQueueControlSystem.getInstance();
+		final SingleQueueControlSystem singleController = SingleQueueControlSystem.getInstance();
 		
 		multiController.generateQueuesAndServers(NUM_OF_SERVERS);
 		singleController.generateQueuesAndServers(NUM_OF_SERVERS);
@@ -38,13 +38,13 @@ public class Simulator {
 					return;
 				}
 				
-	            MultiQueueControlSystem.getInstance().customerArrival();
-	            MultiQueueControlSystem.getInstance().allocateCustomersToServers();
-	            MultiQueueControlSystem.getInstance().removeFinishedCustomersFromServers();
+	            multiController.customerArrival();
+	            multiController.allocateCustomersToServers();
+	            multiController.removeFinishedCustomersFromServers();
 	            	
-	            SingleQueueControlSystem.getInstance().customerArrival();
-	            SingleQueueControlSystem.getInstance().allocateCustomersToServers();
-	            SingleQueueControlSystem.getInstance().removeFinishedCustomersFromServers();
+	            singleController.customerArrival();
+	            singleController.allocateCustomersToServers();
+	            singleController.removeFinishedCustomersFromServers();
 			}
 		}, 1, TICK, TimeUnit.MILLISECONDS);
 	}

@@ -9,18 +9,7 @@ import java.util.Random;
 
 public final class PersonFactory {
 	
-	private static volatile PersonFactory instance = null; 
-	
-	//private constructor
-	private PersonFactory() {}
-	
-	//Instantiates the PersonFactory (Singleton) object
-	public static PersonFactory getInstance() {
-		if (instance == null) {
-			instance = new PersonFactory();
-		}
-		return instance; 
-	}
+	public PersonFactory() {}
 	
 	private int generateRandomNumber() {
 		Random rand = new Random(42);

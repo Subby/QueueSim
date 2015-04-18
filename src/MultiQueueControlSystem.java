@@ -15,11 +15,12 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	
 	private PersonFactory personFactory;
 	
-	private static MultiQueueControlSystem instance; 
+	private static MultiQueueControlSystem instance = null; 
 	
 	private MultiQueueControlSystem() {
 		servers = new ServerCollection();
 		queues = new QueueCollection();
+		personFactory = new PersonFactory();
 	}
 
 	public static MultiQueueControlSystem getInstance() {
@@ -40,7 +41,6 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 
 	//If a customer is generated, add it to the shortest queue 
 	public void customerArrival() {
-		personFactory = PersonFactory.getInstance(); 
 		Person newPerson = personFactory.generatePerson();
 		if (newPerson != null) {
 			Queue shortestQueue = queues.showShortestQueue();
