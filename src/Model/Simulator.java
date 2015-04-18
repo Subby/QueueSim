@@ -41,10 +41,12 @@ public class Simulator {
 				
 	            multiController.customerArrival();
 	            multiController.allocateCustomersToServers();
+	            //Need to serve customers once allocated
 	            multiController.removeFinishedCustomersFromServers();
 	            	
 	            singleController.customerArrival();
 	            singleController.allocateCustomersToServers();
+	            //Need to serve customers once allocated
 	            singleController.removeFinishedCustomersFromServers();
 			}
 		}, 1, TICK, TimeUnit.MILLISECONDS);

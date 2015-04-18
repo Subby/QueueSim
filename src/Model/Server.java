@@ -42,10 +42,8 @@ public abstract class Server {
 	 * @param customer the customer to serve
 	 * @return whether the operation is successful
 	 */
-	public void serveCustomer(Customer customer) {
-		if(isFree == true) {
+	public void serveCustomer() {
 			timeSpentServing++;
-		}
 	}
 	
 	/**
