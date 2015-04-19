@@ -1,3 +1,10 @@
+/**
+ * Tests the HumanServer class. 
+ * Getter & Setter tests are combined in some cases where the tests
+ * where the same to DRY out the code. 
+ * @author Ben Lawton
+ */
+
 package test;
 
 import static org.junit.Assert.assertEquals;
@@ -7,6 +14,8 @@ import org.junit.Test;
 import Model.Customer;
 import Model.HumanServer;
 import Model.Person;
+import Model.PersonQueue;
+import Model.Queue;
 import Model.Server;
 
 public class HumanServerTest {
@@ -14,12 +23,16 @@ public class HumanServerTest {
 	private Server server;
 	private Person customer;
 	private Person customer1;
+	private Queue queue;
+	private Queue queue1;
 	
 	@Before 
 	public void setUp() {
 		server = new HumanServer();
 		customer = new Customer();
 		customer1 = new Customer();
+		queue = new PersonQueue();
+		queue1 = new PersonQueue();
 	}
 	
 	@Test
@@ -47,4 +60,38 @@ public class HumanServerTest {
 		server.setCurrentCustomer(customer);
 		assertEquals(false, server.showAvailability());
 	}
+
+	@Test
+	public void testCurrentCustomer() {
+		server.setCurrentCustomer(customer1);
+		assertEquals(customer1, server.getCurrentCustomer());
+		server.setCurrentCustomer(customer);
+		assertEquals(customer, server.getCurrentCustomer());
+	}
+	
+	@Test
+	public void testIsFree() {
+		server.setFree(false);
+		assertEquals(false, server.isFree());
+		server.setFree(true);
+		assertEquals(true, server.isFree());
+	}
+	
+	@Test
+	public void testGetTimeSpentServing() {
+		server.setCurrentCustomer(customer);
+		server.serveCustomer();
+		server.serveCustomer();
+		assertEquals(2, server.getTimeSpentServing());
+	}
+	
+	@Test
+	public void testAllocatedQueue() {
+		server.setAllocatedQueue(queue);
+		assertEquals(queue, server.getAllocatedQueue());
+		server.setAllocatedQueue(queue1);
+		assertEquals(queue1, server.getAllocatedQueue());
+	}
 }
+
+

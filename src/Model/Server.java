@@ -70,7 +70,9 @@ public abstract class Server {
 		this.currentCustomer = currentCustomer;
 	}
 	
-	
+	public boolean isFree() {
+		return isFree;
+	}
 	
 	/**
 	 * Sets the flag to indicate whether the server is free or not.
