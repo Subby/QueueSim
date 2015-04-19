@@ -31,6 +31,34 @@ public class ServerCollection {
 	}
 	
 	/**
+	 * Increments timeServed for all Servers with an allocated Person
+	 */
+	public void serveCustomers() {
+		if (servers.size() > 0) {
+			for (Server server : servers) {
+				if (server.showAvailability() == false) {
+					server.serveCustomer();
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Finishes with the Servers' customers if their serving time has been reached
+	 */
+	public void finishWithCustomers() {
+		if (servers.size() > 0) {
+			for (Server server : servers) {
+				if (server.showAvailability() == false) {
+					Person currentCustomer = server.getCurrentCustomer();
+					if (currentCustomer.getServeTime() >= server.getTimeSpentServing()) {
+						server.finishWithCustomer();
+					}
+				}
+			}
+		}
+	}
+	/**
 	 * Gets all the servers in this collection.
 	 * @return the servers in this collection
 	 */

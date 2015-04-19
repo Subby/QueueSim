@@ -15,11 +15,14 @@ public class Simulator {
 	//Length of the simulation, should equal 4 hours in simulated time 
 	public static int LENGTH_OF_SIMULATION = 1440;
 	
+	
 	public static void main(String[] args) {
 		
 		
 		final MultiQueueControlSystem multiController = MultiQueueControlSystem.getInstance();
 		final SingleQueueControlSystem singleController = SingleQueueControlSystem.getInstance();
+		final ComplainingCustomerObserver complainerObserver = ComplainingCustomerObserver.getInstance();
+		final ShortOfTimeCustomerObserver shortOfTimeObserver = ShortOfTimeCustomerObserver.getInstance();
 		
 		multiController.generateQueuesAndServers(NUM_OF_SERVERS);
 		singleController.generateQueuesAndServers(NUM_OF_SERVERS);
@@ -40,14 +43,16 @@ public class Simulator {
 				}
 				
 	            multiController.customerArrival();
+	            multiController.serveAndFinishWithCustomers();
+	            complainerObserver.actOnInconveniencedCustomers(multiController);
+	            shortOfTimeObserver.actOnInconveniencedCustomers(multiController);
 	            multiController.allocateCustomersToServers();
-	            //Need to serve customers once allocated
-	            multiController.removeFinishedCustomersFromServers();
 	            	
 	            singleController.customerArrival();
+	            singleController.serveAndFinishWithCustomers();
+	            complainerObserver.actOnInconveniencedCustomers(singleController);
+	            shortOfTimeObserver.actOnInconveniencedCustomers(singleController);
 	            singleController.allocateCustomersToServers();
-	            //Need to serve customers once allocated
-	            singleController.removeFinishedCustomersFromServers();
 			}
 		}, 1, TICK, TimeUnit.MILLISECONDS);
 	}

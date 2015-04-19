@@ -32,7 +32,7 @@ public interface Queue {
 	public boolean removeHeadOfQueue();
 	
 	public Person getHeadOfQueue();
-	
+		
 	public LinkedList<Person> getQueue();
 
 	public void removePerson (Person person);

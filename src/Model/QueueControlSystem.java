@@ -23,8 +23,8 @@ public interface QueueControlSystem {
 	//Allocates customers to free servers until there are no more free servers or no more customers
 	public void allocateCustomersToServers();
 	
-	//When their serving times have been reached, removes customers from servers and sets the servers' availability to free
-	public void removeFinishedCustomersFromServers();
+	//Increments time served. When serving time has been reached, removes customers from servers and sets the servers' availability to free
+	public void serveAndFinishWithCustomers();
 	
 	//Returns all of the queues in the system 
 	public ArrayList<Queue> getQueues();

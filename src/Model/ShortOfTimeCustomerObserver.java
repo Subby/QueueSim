@@ -5,7 +5,7 @@ package Model;
  *
  */
 
-public class ShortOfTimeCustomerObserver implements UnHappyCustomerObserver {
+public class ShortOfTimeCustomerObserver implements UnhappyCustomerObserver {
 	
 	//(Singleton pattern) Variable that points to the single instance of the ShortOftimeCustomerObserver object
 	private static ShortOfTimeCustomerObserver instance;

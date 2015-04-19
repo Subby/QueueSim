@@ -7,7 +7,7 @@ package Model;
  *
  */
 
-public interface UnHappyCustomerObserver {
+public interface UnhappyCustomerObserver {
 		
 	//Act if any of the customers have been waiting for longer than their patience limit can handle
 	public void actOnInconveniencedCustomers(QueueControlSystem queueSystem);

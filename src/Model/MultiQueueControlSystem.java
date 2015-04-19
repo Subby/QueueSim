@@ -21,7 +21,7 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	private MultiQueueControlSystem() {
 		servers = new ServerCollection();
 		queues = new QueueCollection();
-		personFactory = new PersonFactory();
+		personFactory = new PersonFactory();		
 	}
 
 	public static MultiQueueControlSystem getInstance() {
@@ -64,16 +64,11 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	}
 	
 	//Removes customers from the servers if their serve time has been met or exceeded
-	public void removeFinishedCustomersFromServers() {
-		for (Server server : servers.getServers()) {
-			if (server.showAvailability() == false) {
-				Person currentCustomer = server.getCurrentCustomer();
-				if (currentCustomer.getServeTime() >= server.getTimeSpentServing()) {
-					server.finishWithCustomer();
-				}
-			}
-		}	
+	public void serveAndFinishWithCustomers() {
+		servers.serveCustomers();
+		servers.finishWithCustomers();
 	}
+	
 	
 	public ArrayList<Queue> getQueues() {
 		return queues.getQueues();
