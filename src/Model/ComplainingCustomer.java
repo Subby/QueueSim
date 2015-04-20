@@ -22,6 +22,11 @@ public class ComplainingCustomer extends UnhappyCustomer {
 		Stats.TOTAL_WAITING_TIME++;
 	}
 	
+	//Returns the time spent queueing
+	public int getTimeSpentQueueing() {
+		return this.timeSpentQueueing;
+	}
+	
 	//If the time spent queueing is greater than the patience limit, double serving time
 	public boolean queuedForTooLong() {
 		boolean unhappy = false;
@@ -36,6 +41,10 @@ public class ComplainingCustomer extends UnhappyCustomer {
 			int serveTimeDoubled = getServeTime() * 2;
 			setServeTime(serveTimeDoubled);
 		}
+	}
+	
+	public int getPatienceLimit() {
+		return PATIENCE_LIMIT;
 	}
 	
 }

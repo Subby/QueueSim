@@ -22,6 +22,11 @@ public class ShortOfTimeCustomer extends UnhappyCustomer{
 		Stats.TOTAL_WAITING_TIME++;
 	}
 	
+	//Returns the time spent queueing
+		public int getTimeSpentQueueing() {
+			return this.timeSpentQueueing;
+		}
+	
 	//Remove the object from the queue if patience limit is reached
 	public boolean queuedForTooLong() {
 		boolean unhappy = false;
@@ -29,6 +34,10 @@ public class ShortOfTimeCustomer extends UnhappyCustomer{
 			unhappy = true;
 		}
 		return unhappy;
+	}
+	
+	public int getPatienceLimit() {
+		return PATIENCE_LIMIT;
 	}
 	
 
