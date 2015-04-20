@@ -34,7 +34,7 @@ public class ComplainingCustomer extends UnhappyCustomer {
 	public void doubleServeTime() {
 		if (this.timeSpentQueueing >= PATIENCE_LIMIT) {
 			int serveTimeDoubled = getServeTime() * 2;
-			changeServeTime(serveTimeDoubled);
+			setServeTime(serveTimeDoubled);
 		}
 	}
 	

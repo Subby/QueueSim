@@ -24,7 +24,7 @@ public class Customer implements Person {
 		this.serveTime = rand.nextInt(12) + 18; 
 	}
 	
-	protected void changeServeTime(int newServeTime) {
+	public void setServeTime(int newServeTime) {
 		serveTime = newServeTime; 
 	}
 	
