@@ -36,7 +36,7 @@ public class ComplainingCustomerTest {
 		for (int i = 0; i <59; i++) {
 			((ComplainingCustomer) customer).incrementTimeSpentQueueing();
 		}
-		assertEquals(true, ((ComplainingCustomer) customer).queuedForTooLong());
+		assertTrue(((ComplainingCustomer) customer).queuedForTooLong());
 
 	}
 	
