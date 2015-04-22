@@ -11,13 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import model.MultiQueueControlSystem;
+import model.QueueControlSystem;
+import model.Simulator;
+import model.SingleQueueControlSystem;
+import model.Stats;
+
 import view.SimulatorView;
 import view.components.LabelledSlider;
-import Model.MultiQueueControlSystem;
-import Model.QueueControlSystem;
-import Model.Simulator;
-import Model.SingleQueueControlSystem;
-import Model.Stats;
 
 public class AnimatedView extends JPanel implements SimulatorView {
 	

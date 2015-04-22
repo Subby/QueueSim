@@ -1,7 +1,7 @@
 package view.impl;
 
+import model.Stats;
 import view.SimulatorView;
-import Model.Stats;
 
 /**
  * This class handles the command line output

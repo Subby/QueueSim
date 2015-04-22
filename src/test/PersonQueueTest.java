@@ -3,14 +3,15 @@ package test;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import model.ComplainingCustomer;
+import model.Customer;
+import model.Person;
+import model.PersonQueue;
+import model.Queue;
+
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
-import Model.Queue;
-import Model.PersonQueue;
-import Model.Person;
-import Model.Customer;
-import Model.ComplainingCustomer;
 
 public class PersonQueueTest {
 	

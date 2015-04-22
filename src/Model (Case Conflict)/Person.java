@@ -1,4 +1,4 @@
-package Model;
+package model;
 /**
  * Interface modelling any kind of person that could join a queue i.e. customer, inspector or colleague 
  * @author Ben Lawton

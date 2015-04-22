@@ -9,14 +9,15 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
+import model.Customer;
+import model.HumanServer;
+import model.Person;
+import model.PersonQueue;
+import model.Queue;
+import model.Server;
+
 import org.junit.Before;
 import org.junit.Test;
-import Model.Customer;
-import Model.HumanServer;
-import Model.Person;
-import Model.PersonQueue;
-import Model.Queue;
-import Model.Server;
 
 public class HumanServerTest {
 	

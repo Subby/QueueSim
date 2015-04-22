@@ -3,13 +3,14 @@ package test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Model.HumanServer;
-import Model.Server;
-import Model.ServerCollection;
 import static org.junit.Assert.*;
+import model.Customer;
+import model.HumanServer;
+import model.Server;
+import model.ServerCollection;
+
 import org.junit.Before;
 import org.junit.Test;
-import Model.Customer;
 
 public class ServerCollectionTest {
 	

@@ -1,4 +1,4 @@
-package Model;
+package model;
 /**
  * Class that models a customer who takes twice as long
  * to serve if they're kept waiting for more than 8 minutes

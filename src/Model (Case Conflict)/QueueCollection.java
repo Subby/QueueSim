@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class QueueCollection {
 		return shortestQueue;
 	}
 	
-	public void addQueue(Model.Queue queue) {
+	public void addQueue(model.Queue queue) {
 		queues.add(queue);
 	}
 	

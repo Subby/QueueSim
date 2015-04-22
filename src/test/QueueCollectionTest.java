@@ -5,14 +5,15 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import model.Customer;
+import model.Person;
+import model.PersonQueue;
+import model.Queue;
+import model.QueueCollection;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import Model.PersonQueue;
-import Model.QueueCollection;
-import Model.Queue;
-import Model.Person;
-import Model.Customer;
 
 public class QueueCollectionTest {
 	

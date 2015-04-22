@@ -1,9 +1,10 @@
 package test;
 
+import model.Person;
+import model.ShortOfTimeCustomer;
+
 import org.junit.Before;
 import org.junit.Test;
-import Model.Person;
-import Model.ShortOfTimeCustomer;
 import static org.junit.Assert.*;
 
 public class ShortOfTimeCustomerTest {

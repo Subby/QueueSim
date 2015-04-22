@@ -1,4 +1,4 @@
-package Model;
+package model;
 /**
  * Class that models a customer who leaves the queue
  * if they're kept waiting for longer than 10 minutes (60 ticks)

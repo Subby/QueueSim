@@ -1,10 +1,11 @@
 package test;
 
+import model.Customer;
+import model.Person;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import Model.Person;
-import Model.Customer;
 import static org.junit.Assert.*;
 
 public class CustomerTest {

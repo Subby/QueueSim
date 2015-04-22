@@ -1,4 +1,4 @@
-package Model;
+package model;
 /**
  * A superclass modelling the standard, compliant customer
  * @author Ben Lawton 
