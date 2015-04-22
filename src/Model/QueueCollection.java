@@ -42,7 +42,7 @@ public class QueueCollection {
 		return shortestQueue;
 	}
 	
-	public void addQueue(Queue queue) {
+	public void addQueue(Model.Queue queue) {
 		queues.add(queue);
 	}
 	

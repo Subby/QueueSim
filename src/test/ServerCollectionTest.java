@@ -75,6 +75,4 @@ public class ServerCollectionTest {
 		servers.addServer(server);
 		assertEquals(1, servers.getServers().size());
 	}
-	
-	
 }
