@@ -1,58 +1,57 @@
 package model;
-/**
- * A class to handle all the statistics collection, calculation and operations.
- * @author Denver Fernandes
- */
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-
 public class Stats {
-
-	public static int CUSTOMERS_SERVED = 0;
-	public static int CUSTOMERS_GENERATED = 0;
-	public static int CUSTOMERS_LEFT_NOT_SERVED = 0;
-	public static int TOTAL_WAITING_TIME = 0;
 	
-	public static Stats instance = null;
+	private int customersServed;
+	private int customersGenerated;
+	private int customersLeftNotServed;
+	private int totalWaitingTime;
 	
-	private Stats() {
-		//To allow only a single point of access, the constructor is private.
+	public Stats() {}
+	
+	public double getAvgWaitingTime() {
+		return (this.totalWaitingTime/this.customersGenerated);
 	}
 	
-	public static Stats getInstance() {
-		if(instance == null) {
-			instance = new Stats();
-		}
-		return instance;
+	public void incrementCustomersServed() {
+		this.customersServed++;
 	}
 	
-	public double calcAvgWaitingTime() {
-		return (TOTAL_WAITING_TIME / CUSTOMERS_GENERATED);
+	public void incrementCustomersGenerated() {
+		this.customersGenerated++;
 	}
 	
-	public int calcNumCustomersServed() {
-		return CUSTOMERS_SERVED;
+	public void incrementCustomersLeftNotServed() {
+		this.customersLeftNotServed++;
 	}
 	
-	public int calcFractionServed() {
-		return (CUSTOMERS_SERVED / CUSTOMERS_GENERATED);
+	public void incrementTotalWaitingTime() {
+		this.totalWaitingTime++;
 	}
 	
-	public int calcCustomersWithoutBeingServed() {
-		return CUSTOMERS_LEFT_NOT_SERVED;
+	public int getNumCustomersLeftNotServed() {
+		return this.customersServed;
+	}
+	
+	public int getFractionServed() {
+		return (this.customersServed/this.customersGenerated);
+	}
+	
+	public int getNumCustomersNotServed() {
+		return this.customersLeftNotServed;
 	}
 	
 	public void outputToFile() throws FileNotFoundException {
 		PrintWriter output = new PrintWriter("output.txt");
 		StringBuilder strBlr = new StringBuilder();
-		strBlr.append("Average waiting time: " + calcAvgWaitingTime() + "\n");
-		strBlr.append("Number of customers served: " + calcNumCustomersServed() + "\n");
-		strBlr.append("Fraction of customers served: " + calcFractionServed() + "\n");
-		strBlr.append("Number of customers who left without being served: " + calcCustomersWithoutBeingServed() + "\n");
+		strBlr.append("Average waiting time: " + getAvgWaitingTime() + "\n");
+		strBlr.append("Number of customers served: " + getNumCustomersLeftNotServed() + "\n");
+		strBlr.append("Fraction of customers served: " + getFractionServed() + "\n");
+		strBlr.append("Number of customers who left without being served: " + getNumCustomersNotServed());
 		output.write(strBlr.toString());
 		output.close();
 	}
-	
 }

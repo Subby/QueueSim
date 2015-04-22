@@ -2,15 +2,12 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.util.Queue;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import Model.Customer;
-import Model.Person;
-import Model.PersonFactory;
-import Model.PersonQueue;
+import model.Person;
+import model.PersonFactory;
+import model.PersonQueue;
 
 public class PersonFactoryTest {
 	
@@ -29,14 +26,14 @@ public class PersonFactoryTest {
 	 * apart from just leaving the test for this and trusting the libraries to do their thing. 
 	 * What do you guys think?
 	 */
-	//public void testGeneratePerson() {
-		//for (int i = 0; i < 5; i++) {
-			//Person person = factory.generatePerson();
-			//if (person != null) {
-				//queue.addPerson(person);
-			//}
-		//}
-		//assertTrue(1 <= queue.getLength());
-	//}
+	public void testGeneratePerson() {
+		for (int i = 0; i < 5; i++) {
+			Person person = factory.generatePerson();
+			if (person != null) {
+				queue.addPerson(person);
+			}
+		}
+		assertTrue(1 <= queue.getLength());
+	}
 
 }

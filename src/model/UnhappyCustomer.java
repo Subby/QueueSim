@@ -5,10 +5,7 @@ package model;
  */
 
 public abstract class UnhappyCustomer extends Customer {
-	
-	//Increments the time spent in the queue; to be called each time tick  
-	abstract void incrementTimeSpentQueueing();
-	
+		
 	//Return true if the customer has waited for too long
 	abstract boolean queuedForTooLong(); 
 	

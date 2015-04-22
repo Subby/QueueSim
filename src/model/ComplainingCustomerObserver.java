@@ -30,6 +30,7 @@ public class ComplainingCustomerObserver implements UnhappyCustomerObserver {
 			for (Person person : queue.getQueue()) {
 				if (person instanceof ComplainingCustomer) {
 					((ComplainingCustomer) person).incrementTimeSpentQueueing();
+					queueSystem.getStats().incrementTotalWaitingTime();
 					if (((ComplainingCustomer) person).queuedForTooLong() == true) {
 						((ComplainingCustomer) person).doubleServeTime();
 					}

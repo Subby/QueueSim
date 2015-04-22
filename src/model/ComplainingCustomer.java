@@ -19,7 +19,6 @@ public class ComplainingCustomer extends UnhappyCustomer {
 	//Increases time spent queueing by one tick 
 	public void incrementTimeSpentQueueing() {
 		this.timeSpentQueueing++;
-		Stats.TOTAL_WAITING_TIME++;
 	}
 	
 	//Returns the time spent queueing
