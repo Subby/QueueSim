@@ -77,4 +77,9 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		return queueList; 
 	}
 
+	@Override
+	public ServerCollection getServerCollection() {
+		return this.servers;
+	}
+
 }

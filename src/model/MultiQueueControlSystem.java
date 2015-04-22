@@ -69,6 +69,10 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		servers.finishWithCustomers();
 	}
 	
+	public ServerCollection getServerCollection() {
+		return this.servers;
+	}
+	
 	
 	public ArrayList<Queue> getQueues() {
 		return queues.getQueues();

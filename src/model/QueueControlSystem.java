@@ -29,4 +29,6 @@ public interface QueueControlSystem {
 	//Returns all of the queues in the system 
 	public ArrayList<Queue> getQueues();
 	
+	public ServerCollection getServerCollection();
+	
 }
