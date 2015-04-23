@@ -223,7 +223,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		strBlr.append("\n");
 		strBlr.append("Number of customers served: " + stats.getNumCustomersLeftNotServed());
 		strBlr.append("\n");
-		strBlr.append("Fraction of customers served: " + stats.getFractionServed());
+		strBlr.append("Percentage of customers served: " + stats.getFractionServed() + "%");
 		strBlr.append("\n");
 		strBlr.append("Number of customers who left without being served: " + stats.getNumCustomersNotServed());
 		strBlr.append("\n");

@@ -37,7 +37,7 @@ public class Stats {
 	}
 	
 	public int getFractionServed() {
-		return (this.customersServed/this.customersGenerated);
+		return (this.customersServed/this.customersGenerated) * 100;
 	}
 	
 	public int getNumCustomersNotServed() {
@@ -49,7 +49,7 @@ public class Stats {
 		StringBuilder strBlr = new StringBuilder();
 		strBlr.append("Average waiting time: " + getAvgWaitingTime() + "\n");
 		strBlr.append("Number of customers served: " + getNumCustomersLeftNotServed() + "\n");
-		strBlr.append("Fraction of customers served: " + getFractionServed() + "\n");
+		strBlr.append("Percentage of customers served: " + getFractionServed() + "% \n");
 		strBlr.append("Number of customers who left without being served: " + getNumCustomersNotServed());
 		output.write(strBlr.toString());
 		output.close();

@@ -22,7 +22,7 @@ public class TextView implements SimulatorView {
 		StringBuilder strBlr = new StringBuilder();
 		strBlr.append("Average waiting time: " + stats.getAvgWaitingTime());
 		strBlr.append("Number of customers served: " + stats.getNumCustomersLeftNotServed());
-		strBlr.append("Fraction of customers served: " + stats.getFractionServed());
+		strBlr.append("Percentage of customers served: " + stats.getFractionServed() + "%");
 		strBlr.append("Number of customers who left without being served: " + stats.getNumCustomersNotServed());
 		return strBlr.toString();
 
