@@ -1,5 +1,7 @@
 package view.impl;
 
+import model.QueueControlSystem;
+import model.SingleQueueControlSystem;
 import model.Stats;
 import view.SimulatorView;
 
@@ -12,14 +14,16 @@ import view.SimulatorView;
 
 public class TextView implements SimulatorView {
 
-	private Stats stats = Stats.getInstance();
+	private QueueControlSystem selectedQueueControlSystem = SingleQueueControlSystem.getInstance();
+	private Stats stats = selectedQueueControlSystem.getStats();
 	
 	@Override
 	public String output() {
 		StringBuilder strBlr = new StringBuilder();
-		strBlr.append("The fraction of customers served was: " + stats.calcFractionServed());
-		strBlr.append("The number of customers served was: " + stats.calcNumCustomersServed());
-		strBlr.append("The average waiting time was: " + stats.calcAvgWaitingTime());
+		strBlr.append("Average waiting time: " + stats.getAvgWaitingTime());
+		strBlr.append("Number of customers served: " + stats.getNumCustomersLeftNotServed());
+		strBlr.append("Fraction of customers served: " + stats.getFractionServed());
+		strBlr.append("Number of customers who left without being served: " + stats.getNumCustomersNotServed());
 		return strBlr.toString();
 
 	}
