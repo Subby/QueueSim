@@ -16,12 +16,15 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	
 	private PersonFactory personFactory;
 	
+	private Stats stats;
+	
 	private static MultiQueueControlSystem instance = null; 
 	
 	private MultiQueueControlSystem() {
 		servers = new ServerCollection();
 		queues = new QueueCollection();
 		personFactory = new PersonFactory();		
+		stats = new Stats();
 	}
 
 	public static MultiQueueControlSystem getInstance() {
@@ -46,7 +49,7 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		if (newPerson != null) {
 			Queue shortestQueue = queues.showShortestQueue();
 			shortestQueue.addPerson(newPerson);
-			Stats.CUSTOMERS_GENERATED++;
+			this.stats.incrementCustomersGenerated();
 		}
 	}
 
@@ -66,7 +69,13 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	//Removes customers from the servers if their serve time has been met or exceeded
 	public void serveAndFinishWithCustomers() {
 		servers.serveCustomers();
+		int numBefore = servers.showAvailableServers().size();
 		servers.finishWithCustomers();
+		int numAfter = servers.showAvailableServers().size();
+		int numCustomersServed = numAfter - numBefore;
+		for (int i = 0; i < numCustomersServed; i++) {
+			this.stats.incrementCustomersServed();
+		}
 	}
 	
 	public ServerCollection getServerCollection() {
@@ -76,5 +85,9 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	
 	public ArrayList<Queue> getQueues() {
 		return queues.getQueues();
+	}
+	
+	public Stats getStats() {
+		return this.stats;
 	}
 }

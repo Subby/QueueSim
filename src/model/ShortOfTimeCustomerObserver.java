@@ -29,9 +29,10 @@ public class ShortOfTimeCustomerObserver implements UnhappyCustomerObserver {
 			for (Person person : queue.getQueue()) {
 				if (person instanceof ShortOfTimeCustomer) {
 					((ShortOfTimeCustomer) person).incrementTimeSpentQueueing();
+					queueSystem.getStats().incrementTotalWaitingTime();
 					if (((ShortOfTimeCustomer) person).queuedForTooLong() == true) {
 						queue.removePerson(person);
-						Stats.CUSTOMERS_LEFT_NOT_SERVED++;
+						queueSystem.getStats().incrementCustomersLeftNotServed();
 					}
 				}
 			}

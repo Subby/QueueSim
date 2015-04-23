@@ -21,10 +21,14 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	//(Singleton pattern) The only instance of the class 
 	private static SingleQueueControlSystem instance; 
 	
+	//The statistics for the simulation
+	private Stats stats;
+	
 	private SingleQueueControlSystem() {
 		queue = new PersonQueue();
 		servers = new ServerCollection();
 		personFactory = new PersonFactory();
+		stats = new Stats();
 	}
 	
 	//Instantiates the object if it hasn't already been instantiated. Otherwise just returns the lone object. 
@@ -48,7 +52,7 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		Person newPerson = personFactory.generatePerson();
 		if (newPerson != null) {
 			queue.addPerson(newPerson);
-			Stats.CUSTOMERS_GENERATED++;
+			this.stats.incrementCustomersGenerated();
 		}
 	}
 	
@@ -68,7 +72,13 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	//Remove customers from the servers if their serve time has bee exceeded 
 	public void serveAndFinishWithCustomers() {
 		servers.serveCustomers();
+		int numBefore = servers.showAvailableServers().size();
 		servers.finishWithCustomers();
+		int numAfter = servers.showAvailableServers().size();
+		int numCustomersServed = numAfter - numBefore;
+		for (int i = 0; i < numCustomersServed; i++) {
+			this.stats.incrementCustomersServed();
+		}
 	}
 
 	public ArrayList<Queue> getQueues() {
@@ -80,6 +90,10 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	@Override
 	public ServerCollection getServerCollection() {
 		return this.servers;
+	}
+	
+	public Stats getStats() {
+		return this.stats;
 	}
 
 }

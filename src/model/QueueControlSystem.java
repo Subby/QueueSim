@@ -31,4 +31,6 @@ public interface QueueControlSystem {
 	
 	public ServerCollection getServerCollection();
 	
+	public Stats getStats();
+	
 }

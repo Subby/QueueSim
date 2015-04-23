@@ -11,6 +11,9 @@ public class Customer implements Person {
 	//The amount of time (ticks) it takes to serve a customer
 	private int serveTime;
 	
+	@SuppressWarnings("unused")
+	private int timeSpentQueueing;
+	
 	public Customer() {
 		initialiseServeTime();
 	}
@@ -30,6 +33,10 @@ public class Customer implements Person {
 	
 	public int getServeTime() {
 		return this.serveTime;
+	}
+	
+	public void incrementTimeSpentQueueing() {
+		this.timeSpentQueueing++;
 	}
 
 }
