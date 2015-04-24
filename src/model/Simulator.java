@@ -12,19 +12,19 @@ import view.impl.AnimatedView;
 
 public class Simulator {
 	
-	public static int TICK = 10;
-	public static int NUM_OF_SERVERS = 3;
-	//Length of the simulation, should equal whatever the given value is in hours.
-	public static int LENGTH_OF_SIMULATION = (int) AnimatedView.SIMULATIONLENGTHSLIDER * 360;
-	public static boolean SHOULD_RUN = true;
-	public static QueueControlSystem SELECTEDQUEUESYSTEM = MultiQueueControlSystem.getInstance();
+	private static int tick = 10;
+	private static int numOfServers = 3;
+	//Length of the simulation, should equal 4 hours in simulated time 
+	private static int lengthOfSimulation = 1440;
+	private static boolean shouldRun = true;
+	public static QueueControlSystem selectedQueueSystem = MultiQueueControlSystem.getInstance();
 	
 	public static void main(String[] args) {
 		
 		final ComplainingCustomerObserver complainerObserver = ComplainingCustomerObserver.getInstance();
 		final ShortOfTimeCustomerObserver shortOfTimeObserver = ShortOfTimeCustomerObserver.getInstance();
 		
-		SELECTEDQUEUESYSTEM.generateQueuesAndServers(NUM_OF_SERVERS);
+		selectedQueueSystem.generateQueuesAndServers(numOfServers);
 		
         final ScheduledExecutorService ticker = Executors.newSingleThreadScheduledExecutor();
         
@@ -33,26 +33,72 @@ public class Simulator {
     		int currentTime = 0;
         	
 			public void run() {
-				if(!SHOULD_RUN) {
+				if(!shouldRun) {
 					ticker.shutdown();
 					return;
 				}
 				
-				if(currentTime < LENGTH_OF_SIMULATION) {
+				if(currentTime < lengthOfSimulation) {
 					currentTime = currentTime + 1;
 				} else {
 					ticker.shutdown();
 					return;
 				}
 				
-				SELECTEDQUEUESYSTEM.customerArrival();
-				SELECTEDQUEUESYSTEM.serveAndFinishWithCustomers();
-	            complainerObserver.actOnInconveniencedCustomers(SELECTEDQUEUESYSTEM);
-	            shortOfTimeObserver.actOnInconveniencedCustomers(SELECTEDQUEUESYSTEM);
-	            SELECTEDQUEUESYSTEM.allocateCustomersToServers();
+				selectedQueueSystem.customerArrival();
+				selectedQueueSystem.serveAndFinishWithCustomers();
+	            complainerObserver.actOnInconveniencedCustomers(selectedQueueSystem);
+	            shortOfTimeObserver.actOnInconveniencedCustomers(selectedQueueSystem);
+	            selectedQueueSystem.allocateCustomersToServers();
 	            
 			}
-		}, 1, TICK, TimeUnit.MILLISECONDS);
+		}, 1, tick, TimeUnit.MILLISECONDS);
 	}
+	
+	/**
+	 * Sets the number of servers to be used in this simulation.
+	 * @param number the number of servers to be used
+	 */
+	public void setNumberOfServers(int number) {
+		if(number <= 0) {
+			return;	
+		}
+		numOfServers = number;
+	}
+	
+	/**
+	 * Sets the length of the simulation.
+	 * @param length the length of simulation
+	 */
+	public void setLengthOfSimulation(int length) {
+		if(length <= 0) {
+			return;
+		}
+		lengthOfSimulation = length;
+	}
+	
+	/**
+	 * Sets a flag to indicate whether the simulator should be running.
+	 * @param run the flag
+	 */
+	public void setShouldRun(boolean run) {
+		shouldRun = run;
+	}
+	
+	/**
+	 * Sets the queue system type.
+	 * @param controlSystem the queue system type to set
+	 */
+	public void setQueueSystem(QueueControlSystem controlSystem) {
+		if(controlSystem == null) {
+			return;
+		}
+		selectedQueueSystem = controlSystem;
+	}
+	
+	public QueueControlSystem getQueueSystem() {
+		return selectedQueueSystem;
+	}
+	
 }
 
