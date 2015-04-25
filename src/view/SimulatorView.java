@@ -7,6 +7,10 @@ package view;
  */
 
 public interface SimulatorView {
-
+	
+	/**
+	 * The output of the simulator view.
+	 * @return the output
+	 */
 	public String output();
 }

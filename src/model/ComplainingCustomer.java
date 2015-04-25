@@ -35,6 +35,9 @@ public class ComplainingCustomer extends UnhappyCustomer {
 		return unhappy; 
 	}
 	
+	/**
+	 * Doubles the serve time for this type of customer.
+	 */
 	public void doubleServeTime() {
 		if (this.timeSpentQueueing >= PATIENCE_LIMIT) {
 			int serveTimeDoubled = getServeTime() * 2;
@@ -42,6 +45,9 @@ public class ComplainingCustomer extends UnhappyCustomer {
 		}
 	}
 	
+	/**
+	 * Gets the patience limit for this type of customer.
+	 */
 	public int getPatienceLimit() {
 		return PATIENCE_LIMIT;
 	}

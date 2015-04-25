@@ -211,6 +211,10 @@ public class AnimatedView extends JPanel implements SimulatorView {
 			});
 	}
 	
+	/**
+	 * Appends a message to the output text area.
+	 * @param message the message to output.
+	 */
     private void appenedToTextArea(String message) {
     	outputArea.append(message);
     	outputArea.append("\n");
