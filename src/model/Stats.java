@@ -36,22 +36,28 @@ public class Stats {
 		return this.customersServed;
 	}
 	
-	public int getFractionServed() {
-		return (this.customersServed/this.customersGenerated) * 100;
+	public double getFractionServed() {
+		return ((double)this.customersServed/(double)this.customersGenerated);
 	}
 	
 	public int getNumCustomersNotServed() {
 		return this.customersLeftNotServed;
 	}
 	
-	public void outputToFile() throws FileNotFoundException {
-		PrintWriter output = new PrintWriter("output.txt");
-		StringBuilder strBlr = new StringBuilder();
-		strBlr.append("Average waiting time: " + getAvgWaitingTime() + "\n");
-		strBlr.append("Number of customers served: " + getNumCustomersLeftNotServed() + "\n");
-		strBlr.append("Percentage of customers served: " + getFractionServed() + "% \n");
-		strBlr.append("Number of customers who left without being served: " + getNumCustomersNotServed());
-		output.write(strBlr.toString());
-		output.close();
+	public void outputToFile(){
+		PrintWriter output;
+		try {
+			output = new PrintWriter("output.txt");
+			StringBuilder strBlr = new StringBuilder();
+			strBlr.append("Average waiting time: " + getAvgWaitingTime() + "\n");
+			strBlr.append("Number of customers served: " + getNumCustomersLeftNotServed() + "\n");
+			strBlr.append("Fraction of customers served: " + getFractionServed() + "\n");
+			strBlr.append("Number of customers who left without being served: " + getNumCustomersNotServed());
+			output.write(strBlr.toString());
+			output.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
 	}
 }

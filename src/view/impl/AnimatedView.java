@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.event.ChangeListener;
 
 import model.MultiQueueControlSystem;
 import model.QueueControlSystem;
@@ -82,7 +85,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
         
         PROBABILITYSLIDERVALUE = probabilitySlider.getValue();
         SIMULATIONLENGTHSLIDER = simulationLengthSlider.getValue();
-        
+
         outputArea = new JTextArea(13, 23);
         outputArea.setEditable(false);
         outputAreaScroll = new JScrollPane();
@@ -220,11 +223,10 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		strBlr.append("\n");
 		strBlr.append("Number of customers served: " + stats.getNumCustomersLeftNotServed());
 		strBlr.append("\n");
-		strBlr.append("Percentage of customers served: " + stats.getFractionServed() + "%");
+		strBlr.append("Fraction of customers served: " + stats.getFractionServed());
 		strBlr.append("\n");
 		strBlr.append("Number of customers who left without being served: " + stats.getNumCustomersNotServed());
 		strBlr.append("\n");
 		return strBlr.toString();
 	}
-	
 }

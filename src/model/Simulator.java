@@ -7,9 +7,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import view.impl.AnimatedView;
-
-
 public class Simulator {
 	
 	private static int tick = 10;
@@ -17,7 +14,7 @@ public class Simulator {
 	//Length of the simulation, should equal 4 hours in simulated time 
 	private static int lengthOfSimulation = 1440;
 	private static boolean shouldRun = true;
-	public static QueueControlSystem selectedQueueSystem = MultiQueueControlSystem.getInstance();
+	public static QueueControlSystem selectedQueueSystem = SingleQueueControlSystem.getInstance();
 	
 	public static void main(String[] args) {
 		
