@@ -20,6 +20,7 @@ public class Simulator {
 		
 		final ComplainingCustomerObserver complainerObserver = ComplainingCustomerObserver.getInstance();
 		final ShortOfTimeCustomerObserver shortOfTimeObserver = ShortOfTimeCustomerObserver.getInstance();
+		final CustomerObserver customerObserver = CustomerObserver.getInstance();
 		
 		selectedQueueSystem.generateQueuesAndServers(numOfServers);
 		
@@ -45,6 +46,7 @@ public class Simulator {
 				
 				selectedQueueSystem.customerArrival();
 				selectedQueueSystem.serveAndFinishWithCustomers();
+				customerObserver.incrementTimeSpentQueueing(selectedQueueSystem);
 	            complainerObserver.actOnInconveniencedCustomers(selectedQueueSystem);
 	            shortOfTimeObserver.actOnInconveniencedCustomers(selectedQueueSystem);
 	            selectedQueueSystem.allocateCustomersToServers();

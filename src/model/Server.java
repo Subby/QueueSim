@@ -67,6 +67,9 @@ public abstract class Server {
 	 */
 	public void setCurrentCustomer(Person currentCustomer) {
 		this.currentCustomer = currentCustomer;
+		if (currentCustomer != null) {
+			this.isFree = false;
+		}
 	}
 	
 	/**

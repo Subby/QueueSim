@@ -20,7 +20,7 @@ public class Stats {
 	 * Gets the average waiting time.
 	 * @return the average waiting time
 	 */
-	public double getAvgWaitingTime() {
+	public int getAvgWaitingTime() {
 		return (this.totalWaitingTime/this.customersGenerated);
 	}
 	
@@ -65,7 +65,7 @@ public class Stats {
 	 * @return the fraction of customers who left without being served
 	 */
 	public double getFractionServed() {
-		return ((double)this.customersServed/(double)this.customersGenerated) * 100;
+		return ((double)this.customersServed/(double)this.customersGenerated);
 	}
 	
 	/**
