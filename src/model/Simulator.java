@@ -39,6 +39,7 @@ public class Simulator {
 					currentTime = currentTime + 1;
 				} else {
 					ticker.shutdown();
+					System.out.println("Simulator stopped.");
 					return;
 				}
 				
