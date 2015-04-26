@@ -42,6 +42,10 @@ public class QueueCollection {
 		return shortestQueue;
 	}
 	
+	/**
+	 * Adds a new {@link Queue} to the collection.
+	 * @param queue the queue to add
+	 */
 	public void addQueue(model.Queue queue) {
 		queues.add(queue);
 	}

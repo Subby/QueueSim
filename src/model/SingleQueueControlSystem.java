@@ -92,6 +92,9 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		return this.servers;
 	}
 	
+	/**
+	 * Gets the {@link Stats} instance.
+	 */
 	public Stats getStats() {
 		return this.stats;
 	}

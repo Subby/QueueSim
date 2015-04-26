@@ -95,7 +95,7 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	}
 	
 	/**
-	 * Gets the stats instance.
+	 * Gets the {@link Stats} instance.
 	 */
 	public Stats getStats() {
 		return this.stats;

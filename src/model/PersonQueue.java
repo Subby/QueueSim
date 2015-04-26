@@ -58,7 +58,7 @@ public class PersonQueue implements Queue {
 	}
 	
 	/**
-	 * Gets the person at the top of the queue.
+	 * Gets the {@link Person} at the top of the queue.
 	 */
 	public Person getHeadOfQueue() {
 		return queue.getFirst();
