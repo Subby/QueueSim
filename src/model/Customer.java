@@ -27,14 +27,25 @@ public class Customer implements Person {
 		this.serveTime = rand.nextInt(12) + 18; 
 	}
 	
+	/**
+	 * Sets the serve time for this customer.
+	 * @param newServeTime the serve time
+	 */
 	public void setServeTime(int newServeTime) {
 		serveTime = newServeTime; 
 	}
 	
+	/**
+	 * Gets the serve time for this customer.
+	 * @return the serve time
+	 */
 	public int getServeTime() {
 		return this.serveTime;
 	}
 	
+	/**
+	 * Increments the time spent queueing for this customer.
+	 */
 	public void incrementTimeSpentQueueing() {
 		this.timeSpentQueueing++;
 	}

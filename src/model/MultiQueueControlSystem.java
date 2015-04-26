@@ -33,6 +33,11 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		}
 		return instance;
 	}
+	
+	/**
+	 * Generates the queues and servers with a given number of servers.
+	 * @param numServers the number of servers to use
+	 */
 	public void generateQueuesAndServers(int numServers) {
 		for (int i = 0; i < numServers; i++) {
 			Server server = new HumanServer();
@@ -82,11 +87,16 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		return this.servers;
 	}
 	
-	
+	/**
+	 * Gets all the queues.
+	 */
 	public ArrayList<Queue> getQueues() {
 		return queues.getQueues();
 	}
 	
+	/**
+	 * Gets the {@link Stats} instance.
+	 */
 	public Stats getStats() {
 		return this.stats;
 	}

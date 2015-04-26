@@ -28,10 +28,17 @@ public class PersonQueue implements Queue {
 		}
 	}
 	
+	/**
+	 * Gets the queue of people.
+	 */
 	public LinkedList<Person> getQueue() {
 		return queue;
 	}
 	
+	/**
+	 * Removes a person from the queue.
+	 * @param person the person to remove
+	 */
 	public void removePerson(Person person) {
 		queue.remove(person);
 	}
@@ -50,6 +57,9 @@ public class PersonQueue implements Queue {
 		return true;
 	}
 	
+	/**
+	 * Gets the {@link Person} at the top of the queue.
+	 */
 	public Person getHeadOfQueue() {
 		return queue.getFirst();
 	}

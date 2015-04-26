@@ -12,6 +12,10 @@ public final class PersonFactory {
 	
 	public PersonFactory() {}
 	
+	/**
+	 * Generates a random number.
+	 * @return the random number
+	 */
 	private int generateRandomNumber() {
 		Random rand = new Random(42);
 		return rand.nextInt(101);

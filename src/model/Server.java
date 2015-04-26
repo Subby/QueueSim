@@ -69,6 +69,10 @@ public abstract class Server {
 		this.currentCustomer = currentCustomer;
 	}
 	
+	/**
+	 * Signifies whether the server is free.
+	 * @return whether the server is free
+	 */
 	public boolean isFree() {
 		return isFree;
 	}
