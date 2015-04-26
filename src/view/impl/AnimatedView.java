@@ -51,7 +51,6 @@ public class AnimatedView extends JPanel implements SimulatorView {
     
     //Static values so that a new AnimatedView object is not created by the Simulator.
     public static double PROBABILITYSLIDERVALUE;
-    public static double SIMULATIONLENGTHSLIDER;
     
     private Stats stats;
     
@@ -81,10 +80,9 @@ public class AnimatedView extends JPanel implements SimulatorView {
         stats = simulator.getQueueSystem().getStats();
         
         probabilitySlider = new LabelledSlider("Probability: ", 5, 5, 30, 5);
-        simulationLengthSlider = new LabelledSlider("Simulation Length (hours) : ", 10, 5, 60, 5);
+        simulationLengthSlider = new LabelledSlider("Simulation Length (hours) : ", 4, 5, 60, 5);
         
         PROBABILITYSLIDERVALUE = probabilitySlider.getValue();
-        SIMULATIONLENGTHSLIDER = simulationLengthSlider.getValue();
 
         outputArea = new JTextArea(13, 23);
         outputArea.setEditable(false);
@@ -97,6 +95,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
         	@Override
 			public void actionPerformed(ActionEvent e) {
         		simulator.setShouldRun(true);
+        		simulator.setLengthOfSimulation((int)simulationLengthSlider.getValue());
 				simulator.main(null);
 				appenedToTextArea("Simulator running");
 				simulatorRunning = true;
