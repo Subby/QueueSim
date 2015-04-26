@@ -65,7 +65,7 @@ public class Stats {
 	 * @return the fraction of customers who left without being served
 	 */
 	public double getFractionServed() {
-		return ((double)this.customersServed/(double)this.customersGenerated);
+		return ((double)this.customersServed/(double)this.customersGenerated) * 100;
 	}
 	
 	/**
