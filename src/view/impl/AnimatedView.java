@@ -46,7 +46,9 @@ public class AnimatedView extends JPanel implements SimulatorView {
 	private JButton runBtn;
 	private JButton cancelBtn;
 	
-    private LabelledSlider probabilitySlider;
+    private LabelledSlider complainingProbabilitySlider;
+    private LabelledSlider normalProbabilitySlider;
+    private LabelledSlider shortProbabilitySlider;
     private LabelledSlider simulationLengthSlider;
     
     //Static values so that a new AnimatedView object is not created by the Simulator.
@@ -59,6 +61,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
     
 	public AnimatedView() {
 		JPanel westPanel = new JPanel();
+		JPanel eastPanel = new JPanel();
 		JPanel centerPanel = new JPanel();
 		JPanel southPanel = new JPanel();
 		
@@ -79,10 +82,12 @@ public class AnimatedView extends JPanel implements SimulatorView {
         
         stats = simulator.getQueueSystem().getStats();
         
-        probabilitySlider = new LabelledSlider("Probability: ", 5, 5, 30, 5);
+        complainingProbabilitySlider = new LabelledSlider("Comp. Customer Probability: ", 5, 5, 30, 5);
+        normalProbabilitySlider = new LabelledSlider("Norm. Customer Probability: ", 5, 5, 30, 5);
+        shortProbabilitySlider = new LabelledSlider("Short Customer Probability: ", 5, 5, 30, 5);
         simulationLengthSlider = new LabelledSlider("Simulation Length (hours) : ", 4, 5, 60, 5);
-        
-        PROBABILITYSLIDERVALUE = probabilitySlider.getValue();
+
+        PROBABILITYSLIDERVALUE = complainingProbabilitySlider.getValue();
 
         outputArea = new JTextArea(13, 23);
         outputArea.setEditable(false);
@@ -159,11 +164,15 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		
 		sliderPanel.setLayout(new BorderLayout());
 		sliderPanel.add(simulationLengthSlider, BorderLayout.NORTH);
-		sliderPanel.add(probabilitySlider, BorderLayout.SOUTH);
 		
 		comboPanel.setLayout(new BorderLayout());
 		comboPanel.add(serverPanel, BorderLayout.NORTH);
 		comboPanel.add(queueTypePanel, BorderLayout.SOUTH);
+		
+		eastPanel.setLayout(new BorderLayout());
+		eastPanel.add(complainingProbabilitySlider, BorderLayout.NORTH);
+		eastPanel.add(normalProbabilitySlider, BorderLayout.CENTER);
+		eastPanel.add(shortProbabilitySlider, BorderLayout.SOUTH);
 		
 		westPanel.setLayout(new BorderLayout());
 		westPanel.add(comboPanel, BorderLayout.NORTH);
@@ -185,15 +194,16 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		southPanel.setLayout(new BorderLayout());
 		southPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-		add(westPanel,BorderLayout.WEST);
-		add(centerPanel,BorderLayout.CENTER);
-		add(southPanel,BorderLayout.SOUTH);
+		add(westPanel, BorderLayout.WEST);
+		add(eastPanel, BorderLayout.EAST);
+		add(centerPanel, BorderLayout.CENTER);
+		add(southPanel, BorderLayout.SOUTH);
 	}
 	
 	public static void main(String... args) {
 		final JFrame frame = new JFrame("Animated View");
 		frame.getContentPane().add(new AnimatedView());
-		frame.setSize(500, 275);
+		frame.setSize(800, 275);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.setVisible(true);
