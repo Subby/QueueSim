@@ -58,7 +58,7 @@ public class ServerCollectionTest {
 			servers.serveCustomers();
 		}
 		servers.finishWithCustomers();
-		assertSame(server, servers.showAvailableServers().get(0));
+		assertEquals(1, servers.showAvailableServers().size());
 	}
 	
 	@Test

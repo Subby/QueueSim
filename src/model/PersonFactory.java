@@ -10,15 +10,10 @@ import java.util.Random;
 
 public final class PersonFactory {
 	
-	public PersonFactory() {}
+	private Random rand;
 	
-	/**
-	 * Generates a random number.
-	 * @return the random number
-	 */
-	private int generateRandomNumber() {
-		Random rand = new Random(42);
-		return rand.nextInt(101);
+	public PersonFactory() {
+		rand = new Random(42);
 	}
 	
 	/**
@@ -29,16 +24,16 @@ public final class PersonFactory {
 	 * @return a Person object if generated 
 	 */
 	public Person generatePerson() {
-		int probability = generateRandomNumber();
+		double probability = rand.nextDouble();
 		Person person = null;
 		
-		if (probability <= 7) {
+		if (probability <= 0.07) {
 			person = new ComplainingCustomer();
 		}
-		else if (probability > 7 && probability <= 14) {
+		else if (probability > 0.07 && probability <= 0.14) {
 			person = new Customer();
 		}
-		else if (probability > 14 && probability < 20) {
+		else if (probability > 0.14 && probability < 0.20) {
 			person = new ShortOfTimeCustomer();
 		}
 		return person;

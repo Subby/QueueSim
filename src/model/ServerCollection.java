@@ -36,7 +36,7 @@ public class ServerCollection {
 	public void serveCustomers() {
 		if (servers.size() > 0) {
 			for (Server server : servers) {
-				if (server.showAvailability() == false) {
+				if (server.isFree() == false) {
 					server.serveCustomer();
 				}
 			}
@@ -51,7 +51,7 @@ public class ServerCollection {
 			for (Server server : servers) {
 				if (server.showAvailability() == false) {
 					Person currentCustomer = server.getCurrentCustomer();
-					if (currentCustomer.getServeTime() >= server.getTimeSpentServing()) {
+					if (currentCustomer.getServeTime() <= server.getTimeSpentServing()) {
 						server.finishWithCustomer();
 					}
 				}

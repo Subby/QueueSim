@@ -20,6 +20,8 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	
 	private static MultiQueueControlSystem instance = null; 
 	
+	private int i = 0;
+	
 	private MultiQueueControlSystem() {
 		servers = new ServerCollection();
 		queues = new QueueCollection();
@@ -50,6 +52,7 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 
 	//If a customer is generated, add it to the shortest queue 
 	public void customerArrival() {
+		this.i++;
 		Person newPerson = personFactory.generatePerson();
 		if (newPerson != null) {
 			Queue shortestQueue = queues.showShortestQueue();
