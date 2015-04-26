@@ -78,7 +78,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		final Simulator simulator = new Simulator();
         
 		//set the default queue type
-		simulator.setQueueSystem(MQCSInstanced);
+		simulator.setQueueSystem(SQCSInstanced);
         
         stats = simulator.getQueueSystem().getStats();
         
