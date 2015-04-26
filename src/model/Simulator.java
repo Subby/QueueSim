@@ -71,7 +71,8 @@ public class Simulator {
 		if(length <= 0) {
 			return;
 		}
-		lengthOfSimulation = length;
+		//Multiply by 360 to get scaled hour.
+		lengthOfSimulation = length * 360;
 	}
 	
 	/**
