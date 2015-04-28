@@ -65,7 +65,7 @@ public class PersonQueue implements Queue {
 		return queue.getFirst();
 	}
 	
-	public ArrayList<ShortOfTimeCustomer> getSOT() {
+	public ArrayList<ShortOfTimeCustomer> getShortOfTimeCustomers() {
 		ArrayList<ShortOfTimeCustomer> customers = new ArrayList<ShortOfTimeCustomer>();
 		for (Person person : queue) {
 			if (person instanceof ShortOfTimeCustomer) {

@@ -66,8 +66,8 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		JPanel queueTypePanel = new JPanel();
 		
 		//initialise default values
-		final MultiQueueControlSystem MQCSInstanced = new MultiQueueControlSystem();
-		final SingleQueueControlSystem SQCSInstanced = new SingleQueueControlSystem();
+		final QueueControlSystem MQCSInstanced = new MultiQueueControlSystem();
+		final QueueControlSystem SQCSInstanced = new SingleQueueControlSystem();
 				
 		final Simulator simulator = new Simulator();
         

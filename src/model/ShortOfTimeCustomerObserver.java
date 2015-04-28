@@ -15,10 +15,10 @@ public class ShortOfTimeCustomerObserver implements UnhappyCustomerObserver {
 	 */
 	public void actOnInconveniencedCustomers(QueueControlSystem queueSystem) {
 		for (Queue queue : queueSystem.getQueues()) {
-			if (queue.getSOT().size() > 0) {
-				for (ShortOfTimeCustomer sot : queue.getSOT()) {
-					if (sot.queuedForTooLong()) {
-						queue.removePerson(sot);
+			if (queue.getShortOfTimeCustomers().size() > 0) {
+				for (ShortOfTimeCustomer shortOfTimeCustomer : queue.getShortOfTimeCustomers()) {
+					if (shortOfTimeCustomer.queuedForTooLong()) {
+						queue.removePerson(shortOfTimeCustomer);
 						queueSystem.getStats().incrementCustomersLeftNotServed();
 					}
 				}

@@ -38,6 +38,6 @@ public interface Queue {
 
 	public void removePerson (Person person);
 
-	public ArrayList<ShortOfTimeCustomer> getSOT();
+	public ArrayList<ShortOfTimeCustomer> getShortOfTimeCustomers();
 
 }
