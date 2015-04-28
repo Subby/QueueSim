@@ -18,9 +18,9 @@ public class Simulator {
 	
 	public static void main(String[] args) {
 		
-		final ComplainingCustomerObserver complainerObserver = ComplainingCustomerObserver.getInstance();
-		final ShortOfTimeCustomerObserver shortOfTimeObserver = ShortOfTimeCustomerObserver.getInstance();
-		final CustomerObserver customerObserver = CustomerObserver.getInstance();
+		final ComplainingCustomerObserver complainerObserver = new ComplainingCustomerObserver();
+		final ShortOfTimeCustomerObserver shortOfTimeObserver = new ShortOfTimeCustomerObserver(); 
+		final CustomerObserver customerObserver = new CustomerObserver();
 		
 		selectedQueueSystem.generateQueuesAndServers(numOfServers);
 		

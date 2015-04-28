@@ -1,17 +1,8 @@
 package model;
 
 public class CustomerObserver {
-	
-	private static CustomerObserver instance;
-	
-	private CustomerObserver() {}
-	
-	public static CustomerObserver getInstance() {
-		if (instance == null) {
-			instance = new CustomerObserver();
-		}
-		return instance;
-	}
+		
+	public CustomerObserver() {}
 	
 	public void incrementTimeSpentQueueing(QueueControlSystem queueSystem) {
 		int totalTimeWaitedIncrement = 0;

@@ -34,6 +34,7 @@ import view.components.LabelledSlider;
 
 public class AnimatedView extends JPanel implements SimulatorView {
 	
+	private static final long serialVersionUID = -34020607785964557L;
 	private JLabel queuingSystemLabel;
 	private JComboBox<String> queuingSystem;
     
