@@ -93,6 +93,18 @@ public class Stats {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
+	}
+	
+	public String toString() {
+		StringBuilder strBlr = new StringBuilder();
+		strBlr.append("Average waiting time: " + getAvgWaitingTime());
+		strBlr.append("\n");
+		strBlr.append("Number of customers served: " + getNumCustomersLeftNotServed());
+		strBlr.append("\n");
+		strBlr.append("Fraction of customers served: " + getFractionServed());
+		strBlr.append("\n");
+		strBlr.append("Number of customers who left without being served: " + getNumCustomersNotServed());
+		strBlr.append("\n");
+		return strBlr.toString();
 	}
 }
