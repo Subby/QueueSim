@@ -11,9 +11,12 @@ public class ComplainingCustomer extends UnhappyCustomer {
 	private int timeSpentQueueing;
 	//The cutoff point where the customer takes twice as long to serve
 	private static final int PATIENCE_LIMIT = 48;  
+	//Whether or not the serveTime has been doubled thanks to the customer getting unhappy
+	private boolean isDoubled;
 
 	public ComplainingCustomer() {
 		initialiseServeTime();
+		isDoubled = false;
 	}
 	
 	//Increases time spent queueing by one tick 
@@ -29,7 +32,7 @@ public class ComplainingCustomer extends UnhappyCustomer {
 	//If the time spent queueing is greater than the patience limit, double serving time
 	public boolean queuedForTooLong() {
 		boolean unhappy = false;
-		if (timeSpentQueueing >= PATIENCE_LIMIT) {
+		if (timeSpentQueueing >= PATIENCE_LIMIT && isDoubled == false) {
 			unhappy = true;
 		}
 		return unhappy; 
@@ -42,6 +45,7 @@ public class ComplainingCustomer extends UnhappyCustomer {
 		if (this.timeSpentQueueing >= PATIENCE_LIMIT) {
 			int serveTimeDoubled = getServeTime() * 2;
 			setServeTime(serveTimeDoubled);
+			isDoubled = true;
 		}
 	}
 	
