@@ -76,7 +76,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
         
         stats = simulator.getQueueSystem().getStats();
         
-        simulationLengthSlider = new LabelledSlider("Simulation Length (hours) : ", 4, 5, 60, 5);
+        simulationLengthSlider = new LabelledSlider("Simulation Length (hours) : ", 1, 1, 10, 1);
         
         outputArea = new JTextArea(13, 23);
         outputArea.setEditable(false);
@@ -214,15 +214,6 @@ public class AnimatedView extends JPanel implements SimulatorView {
     
 	@Override
 	public String output() {
-		StringBuilder strBlr = new StringBuilder();
-		strBlr.append("Average waiting time: " + stats.getAvgWaitingTime());
-		strBlr.append("\n");
-		strBlr.append("Number of customers served: " + stats.getNumCustomersLeftNotServed());
-		strBlr.append("\n");
-		strBlr.append("Fraction of customers served: " + stats.getFractionServed());
-		strBlr.append("\n");
-		strBlr.append("Number of customers who left without being served: " + stats.getNumCustomersNotServed());
-		strBlr.append("\n");
-		return strBlr.toString();
+		return stats.toString();
 	}
 }
