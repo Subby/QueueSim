@@ -9,14 +9,14 @@ import java.util.concurrent.TimeUnit;
 
 public class Simulator {
 	
-	private static int tick = 10;
-	private static int numOfServers = 3;
+	private int tick = 10;
+	private int numOfServers = 3;
 	//Length of the simulation, should equal 4 hours in simulated time 
-	private static int lengthOfSimulation = 1440;
-	private static boolean shouldRun = true;
-	public static QueueControlSystem selectedQueueSystem = SingleQueueControlSystem.getInstance();
+	private int lengthOfSimulation = 1440;
+	private boolean shouldRun = true;
+	public QueueControlSystem selectedQueueSystem = new SingleQueueControlSystem();
 	
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		
 		final ComplainingCustomerObserver complainerObserver = new ComplainingCustomerObserver();
 		final ShortOfTimeCustomerObserver shortOfTimeObserver = new ShortOfTimeCustomerObserver(); 
@@ -91,10 +91,9 @@ public class Simulator {
 	 * @param controlSystem the queue system type to set
 	 */
 	public void setQueueSystem(QueueControlSystem controlSystem) {
-		if(controlSystem == null) {
-			return;
+		if(controlSystem != null) {
+			selectedQueueSystem = controlSystem;
 		}
-		selectedQueueSystem = controlSystem;
 	}
 	
 	public QueueControlSystem getQueueSystem() {

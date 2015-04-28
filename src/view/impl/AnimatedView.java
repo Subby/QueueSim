@@ -35,6 +35,7 @@ import view.components.LabelledSlider;
 public class AnimatedView extends JPanel implements SimulatorView {
 	
 	private static final long serialVersionUID = -34020607785964557L;
+	
 	private JLabel queuingSystemLabel;
 	private JComboBox<String> queuingSystem;
     
@@ -55,7 +56,6 @@ public class AnimatedView extends JPanel implements SimulatorView {
 
 	public AnimatedView() {
 		JPanel westPanel = new JPanel();
-		JPanel eastPanel = new JPanel();
 		JPanel centerPanel = new JPanel();
 		JPanel southPanel = new JPanel();
 		
@@ -66,9 +66,9 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		JPanel queueTypePanel = new JPanel();
 		
 		//initialise default values
-		final MultiQueueControlSystem MQCSInstanced = MultiQueueControlSystem.getInstance();
-		final SingleQueueControlSystem SQCSInstanced = SingleQueueControlSystem.getInstance();
-        
+		final MultiQueueControlSystem MQCSInstanced = new MultiQueueControlSystem();
+		final SingleQueueControlSystem SQCSInstanced = new SingleQueueControlSystem();
+				
 		final Simulator simulator = new Simulator();
         
 		//set the default queue type
@@ -179,7 +179,6 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		southPanel.add(buttonPanel, BorderLayout.SOUTH);
 
 		add(westPanel, BorderLayout.WEST);
-		add(eastPanel, BorderLayout.EAST);
 		add(centerPanel, BorderLayout.CENTER);
 		add(southPanel, BorderLayout.SOUTH);
 	}

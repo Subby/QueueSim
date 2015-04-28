@@ -17,26 +17,15 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	
 	//The PersonFactory that generates the customers 
 	private PersonFactory personFactory;
-	
-	//(Singleton pattern) The only instance of the class 
-	private static SingleQueueControlSystem instance; 
-	
+		
 	//The statistics for the simulation
 	private Stats stats;
 	
-	private SingleQueueControlSystem() {
+	public SingleQueueControlSystem() {
 		queue = new PersonQueue();
 		servers = new ServerCollection();
 		personFactory = new PersonFactory();
 		stats = new Stats();
-	}
-	
-	//Instantiates the object if it hasn't already been instantiated. Otherwise just returns the lone object. 
-	public static SingleQueueControlSystem getInstance() {
-		if (instance == null) {
-			instance = new SingleQueueControlSystem();
-		}
-		return instance; 
 	}
 	
 	//Generates the servers for the simulation 

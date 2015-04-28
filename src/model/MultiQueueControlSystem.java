@@ -17,23 +17,12 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	private PersonFactory personFactory;
 	
 	private Stats stats;
-	
-	private static MultiQueueControlSystem instance = null; 
-	
-	private int i = 0;
-	
-	private MultiQueueControlSystem() {
+			
+	public MultiQueueControlSystem() {
 		servers = new ServerCollection();
 		queues = new QueueCollection();
 		personFactory = new PersonFactory();		
 		stats = new Stats();
-	}
-
-	public static MultiQueueControlSystem getInstance() {
-		if(instance == null) {
-			instance = new MultiQueueControlSystem();
-		}
-		return instance;
 	}
 	
 	/**
@@ -52,7 +41,6 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 
 	//If a customer is generated, add it to the shortest queue 
 	public void customerArrival() {
-		this.i++;
 		Person newPerson = personFactory.generatePerson();
 		if (newPerson != null) {
 			Queue shortestQueue = queues.showShortestQueue();
