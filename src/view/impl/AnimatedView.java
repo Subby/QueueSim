@@ -1,8 +1,9 @@
 package view.impl;
 /**
- * The main class the runs the simulator.
+ * The GUI for the simulation.
  * @author Tony Ung
  * @author Denver Fernandes
+ * @author Ben Lawton
  */
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -10,8 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,12 +20,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.event.ChangeListener;
 
-import model.MultiQueueControlSystem;
-import model.QueueControlSystem;
 import model.Simulator;
-import model.SingleQueueControlSystem;
 import model.Stats;
 import view.SimulatorView;
 import view.components.LabelledSlider;
@@ -37,7 +32,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
 	private static final long serialVersionUID = -34020607785964557L;
 	
 	private JLabel queuingSystemLabel;
-	private JComboBox<String> queuingSystem;
+	private JComboBox<String> queueingSystemChoices;
     
     private JLabel numOfServersLabel;
 	private JComboBox<Integer> numOfServers;
@@ -87,6 +82,15 @@ public class AnimatedView extends JPanel implements SimulatorView {
 				simulator.main(null);
 				appenedToTextArea("Simulator running");
 				simulatorRunning = true;
+				if (queueingSystemChoices.getSelectedItem().toString().equals("Single Queue")) {
+					simulator.setSingleQueueControlSystem();
+					stats = simulator.getQueueSystem().getStats();
+				}
+				else if (queueingSystemChoices.getSelectedItem().toString().equals("Multiple Queue")) {
+					simulator.setMultiQueueControlSystem();
+					stats = simulator.getQueueSystem().getStats();
+				}
+				//TODO implement error-handling for if JComboBox isn't working 
 			}
          });
         
@@ -102,33 +106,15 @@ public class AnimatedView extends JPanel implements SimulatorView {
 				simulator.setShouldRun(false);
 				simulatorRunning = false;
 				appenedToTextArea("Simulator stopped");
-				outputArea.append(output());
+				outputArea.append(outputSimulationStats());
 			}
         });
         
 		//queue system select combo box
         String[] queuingSystemItems = {"Single Queue", "Multiple Queue"};
         queuingSystemLabel = new JLabel ("Queuing System");
-        queuingSystem = new JComboBox<String>(queuingSystemItems);
-        queuingSystem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String s = ((String) queuingSystem.getSelectedItem());
-				switch(s) {
-				case "Multiple Queue":
-					simulator.setSingleQueueControlSystem();
-					stats = simulator.getQueueSystem().getStats();
-					break;
-				case "Single Queue":
-					simulator.setMultiQueueControlSystem();
-					stats = simulator.getQueueSystem().getStats();
-					break;
-				default:
-					System.out.println("Unexpected error!");
-					break;
-				}
-			}
-        });
+        queueingSystemChoices = new JComboBox<String>(queuingSystemItems);
+        
         
 		//number of servers select combo box
         Integer[] numOfServersItems = {3, 4, 5, 6};
@@ -164,7 +150,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		
 		queueTypePanel.setLayout(new BorderLayout());
 		queueTypePanel.add(queuingSystemLabel, BorderLayout.NORTH);
-		queueTypePanel.add(queuingSystem, BorderLayout.SOUTH);
+		queueTypePanel.add(queueingSystemChoices, BorderLayout.SOUTH);
 		
 		centerPanel.add(outputAreaScroll);
 		
@@ -209,7 +195,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
     }
     
 	@Override
-	public String output() {
+	public String outputSimulationStats() {
 		return stats.toString();
 	}
 }

@@ -38,7 +38,7 @@ public class TextView implements SimulatorView {
 	}
 	
 	@Override
-	public String output() {
+	public String outputSimulationStats() {
 		return stats.toString();
 	}
 	
