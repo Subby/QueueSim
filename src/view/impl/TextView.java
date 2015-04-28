@@ -58,10 +58,10 @@ public class TextView implements SimulatorView {
         
         switch(input.next()) {
         case "sq":
-        	selectedQueueControlSystem = SingleQueueControlSystem.getInstance();
+        	selectedQueueControlSystem = new SingleQueueControlSystem();
         	break;
         case "mq":
-        	selectedQueueControlSystem = MultiQueueControlSystem.getInstance();
+        	selectedQueueControlSystem = new MultiQueueControlSystem();
         	break;
         default:
         	System.out.println("Not a valid queue system, using the default queue system.");
