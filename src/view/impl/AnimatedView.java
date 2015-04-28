@@ -123,9 +123,11 @@ public class AnimatedView extends JPanel implements SimulatorView {
 				switch(s) {
 				case "Multiple Queue":
 					simulator.setQueueSystem(MQCSInstanced);
+					stats = simulator.getQueueSystem().getStats();
 					break;
 				case "Single Queue":
 					simulator.setQueueSystem(SQCSInstanced);
+					stats = simulator.getQueueSystem().getStats();
 					break;
 				default:
 					System.out.println("Unexpected error!");
