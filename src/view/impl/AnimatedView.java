@@ -47,19 +47,12 @@ public class AnimatedView extends JPanel implements SimulatorView {
 	private JButton runBtn;
 	private JButton cancelBtn;
 	
-    private LabelledSlider complainingProbabilitySlider;
-    private LabelledSlider normalProbabilitySlider;
-    private LabelledSlider shortProbabilitySlider;
     private LabelledSlider simulationLengthSlider;
-    
-    //Static values so that a new AnimatedView object is not created by the Simulator.
-    public static double PROBABILITYSLIDERVALUE;
     
     private Stats stats;
     
     private boolean simulatorRunning = false;
 
-    
 	public AnimatedView() {
 		JPanel westPanel = new JPanel();
 		JPanel eastPanel = new JPanel();
@@ -83,13 +76,8 @@ public class AnimatedView extends JPanel implements SimulatorView {
         
         stats = simulator.getQueueSystem().getStats();
         
-        complainingProbabilitySlider = new LabelledSlider("Comp. Customer Probability: ", 5, 5, 30, 5);
-        normalProbabilitySlider = new LabelledSlider("Norm. Customer Probability: ", 5, 5, 30, 5);
-        shortProbabilitySlider = new LabelledSlider("Short Customer Probability: ", 5, 5, 30, 5);
         simulationLengthSlider = new LabelledSlider("Simulation Length (hours) : ", 4, 5, 60, 5);
-
-        PROBABILITYSLIDERVALUE = complainingProbabilitySlider.getValue();
-
+        
         outputArea = new JTextArea(13, 23);
         outputArea.setEditable(false);
         outputAreaScroll = new JScrollPane();
@@ -169,12 +157,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		comboPanel.setLayout(new BorderLayout());
 		comboPanel.add(serverPanel, BorderLayout.NORTH);
 		comboPanel.add(queueTypePanel, BorderLayout.SOUTH);
-		
-		eastPanel.setLayout(new BorderLayout());
-		eastPanel.add(complainingProbabilitySlider, BorderLayout.NORTH);
-		eastPanel.add(normalProbabilitySlider, BorderLayout.CENTER);
-		eastPanel.add(shortProbabilitySlider, BorderLayout.SOUTH);
-		
+				
 		westPanel.setLayout(new BorderLayout());
 		westPanel.add(comboPanel, BorderLayout.NORTH);
 		westPanel.add(sliderPanel, BorderLayout.SOUTH);
