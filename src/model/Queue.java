@@ -1,5 +1,6 @@
 package model;
 import java.util.LinkedList;
+import java.util.ArrayList;
 
 
 
@@ -36,4 +37,7 @@ public interface Queue {
 	public LinkedList<Person> getQueue();
 
 	public void removePerson (Person person);
+
+	public ArrayList<ShortOfTimeCustomer> getSOT();
+
 }

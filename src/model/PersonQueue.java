@@ -1,6 +1,7 @@
 package model;
 
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -64,4 +65,13 @@ public class PersonQueue implements Queue {
 		return queue.getFirst();
 	}
 	
+	public ArrayList<ShortOfTimeCustomer> getSOT() {
+		ArrayList<ShortOfTimeCustomer> customers = new ArrayList<ShortOfTimeCustomer>();
+		for (Person person : queue) {
+			if (person instanceof ShortOfTimeCustomer) {
+				customers.add((ShortOfTimeCustomer) person);
+			}
+		}
+		return customers;
+	}
 }
