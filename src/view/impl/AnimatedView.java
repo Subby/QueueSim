@@ -76,7 +76,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
         
         stats = simulator.getQueueSystem().getStats();
         
-        simulationLengthSlider = new LabelledSlider("Simulation Length (hours) : ", 4, 5, 60, 5);
+        simulationLengthSlider = new LabelledSlider("Simulation Length (hours) : ", 1, 1, 10, 1);
         
         outputArea = new JTextArea(13, 23);
         outputArea.setEditable(false);
