@@ -70,7 +70,12 @@ public class TextView implements SimulatorView {
         lenOfSimulation = input.nextInt();
         
 		stats = selectedQueueControlSystem.getStats();
-		simulator.setQueueSystem(selectedQueueControlSystem);
+		if (selectedQueueControlSystem instanceof SingleQueueControlSystem) {
+			simulator.setSingleQueueControlSystem();
+		}
+		else if (selectedQueueControlSystem instanceof MultiQueueControlSystem) {
+			simulator.setMultiQueueControlSystem();
+		}
 		simulator.setNumberOfServers(numOfservers);
 		simulator.setLengthOfSimulation(lenOfSimulation);
         simulator.main(null);

@@ -64,15 +64,9 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		JPanel comboPanel = new JPanel();
 		JPanel serverPanel = new JPanel();
 		JPanel queueTypePanel = new JPanel();
-		
-		//initialise default values
-		final QueueControlSystem MQCSInstanced = new MultiQueueControlSystem();
-		final QueueControlSystem SQCSInstanced = new SingleQueueControlSystem();
 				
 		final Simulator simulator = new Simulator();
-        
-		//set the default queue type
-		simulator.setQueueSystem(SQCSInstanced);
+		simulator.setSingleQueueControlSystem();
         
         stats = simulator.getQueueSystem().getStats();
         
@@ -122,11 +116,11 @@ public class AnimatedView extends JPanel implements SimulatorView {
 				String s = ((String) queuingSystem.getSelectedItem());
 				switch(s) {
 				case "Multiple Queue":
-					simulator.setQueueSystem(MQCSInstanced);
+					simulator.setSingleQueueControlSystem();
 					stats = simulator.getQueueSystem().getStats();
 					break;
 				case "Single Queue":
-					simulator.setQueueSystem(SQCSInstanced);
+					simulator.setMultiQueueControlSystem();
 					stats = simulator.getQueueSystem().getStats();
 					break;
 				default:

@@ -86,14 +86,12 @@ public class Simulator {
 		shouldRun = run;
 	}
 	
-	/**
-	 * Sets the queue system type.
-	 * @param controlSystem the queue system type to set
-	 */
-	public void setQueueSystem(QueueControlSystem controlSystem) {
-		if(controlSystem != null) {
-			selectedQueueSystem = controlSystem;
-		}
+	public void setSingleQueueControlSystem() {
+		this.selectedQueueSystem = new SingleQueueControlSystem();
+	}
+	
+	public void setMultiQueueControlSystem() {
+		this.selectedQueueSystem = new MultiQueueControlSystem();
 	}
 	
 	public QueueControlSystem getQueueSystem() {
