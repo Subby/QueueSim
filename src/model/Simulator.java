@@ -11,10 +11,10 @@ public class Simulator {
 	
 	private int tick = 10;
 	private int numOfServers = 3;
-	//Length of the simulation, should equal 4 hours in simulated time 
-	private int lengthOfSimulation = 1440;
+	//Length of the simulation
+	private int lengthOfSimulation;
 	private boolean shouldRun = true;
-	public QueueControlSystem selectedQueueSystem = new SingleQueueControlSystem();
+	public QueueControlSystem selectedQueueSystem;
 	
 	public void main(String[] args) {
 		
