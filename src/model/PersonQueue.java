@@ -13,7 +13,7 @@ import java.util.LinkedList;
 public class PersonQueue implements Queue {
 	
 	/**
-	 * Holds all the different people in the queue.
+	 * Holds all the different Person(s) in the queue.
 	 */
 	private LinkedList<Person> queue;
 	
@@ -22,7 +22,7 @@ public class PersonQueue implements Queue {
 	}
 	
 	/**
-	 * Adds a person to the queue
+	 * Adds a Person to the queue
 	 * @param person to add to the queue 
 	 */
 	@Override
@@ -33,8 +33,9 @@ public class PersonQueue implements Queue {
 	}
 	
 	/**
-	 * @return the people in the queue 
+	 * @return a LinkedList containing the people in the queue 
 	 */
+	@Override
 	public LinkedList<Person> getQueue() {
 		return queue;
 	}
@@ -43,6 +44,7 @@ public class PersonQueue implements Queue {
 	 * Removes a person from the queue.
 	 * @param person the person to be removed 
 	 */
+	@Override 
 	public void removePerson(Person person) {
 		queue.remove(person);
 	}

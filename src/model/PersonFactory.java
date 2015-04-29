@@ -1,12 +1,11 @@
-package model;
 /**
- * Class that handles the generation of customers based on
- * their probability of being generated
+ * Class that generates customers based on their probability of arrival
+ * follows the Factory pattern 
  * @author Ben Lawton
  */
+package model;
 
 import java.util.Random;
-
 
 public final class PersonFactory {
 	
@@ -17,11 +16,12 @@ public final class PersonFactory {
 	}
 	
 	/**
-	 * Generates a new person if the probability matches their likelihood of appearing
-	 * ComplainingCustomer has a 0.07 probability of being generated 
-	 * Customer has a 0.07 probability of being generated
-	 * ShortOfTime has a 0.05 probability of being generated
-	 * @return a Person object if generated 
+	 * (Possibly) Generates a Person if their range matches the number generated. 
+	 * Models the following probabilities of generation...
+	 * Customer: 0.07
+	 * ComplainingCustomer: 0.07 
+	 * ShortOfTimeCustomer: 0.05 
+	 * @return the appropriate object if generated, otherwise null 
 	 */
 	public Person generatePerson() {
 		double probability = rand.nextDouble();

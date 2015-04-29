@@ -2,35 +2,49 @@ package model;
 import java.util.ArrayList;
 
 /**
- * Interface that models a queueing system
- * Controls the generation of Queues and Servers for the simulation, and
- * the flow of customers between them 
+ * Interface that models the queueing system
+ * Acts as the "puppet master" for all of the different moving parts in the simulation 
  * @author Ben Lawton 
  *
  */
 
 public interface QueueControlSystem {
 	
-	//Generates the queues and servers for the simulation 
+	/**
+	 * Generates the the queues and servers to be used in the system 
+	 */
 	public void generateQueuesAndServers(int numServers);
 	
 	/**
 	 * Calls the PersonFactory generatePerson() method
-	 * If a Person is generated, this method adds them to the shortest queue
+	 * If a Person is generated, adds them to the shortest queue in the system 
 	 */
 	public void customerArrival();
 	
-	//Allocates customers to free servers until there are no more free servers or no more customers
+	/**
+	 * Allocates a customer to an available server until there are no more available servers or no more customers 
+	 */
 	public void allocateCustomersToServers();
 	
-	//Increments time served. When serving time has been reached, removes customers from servers and sets the servers' availability to free
+	/**
+	 * Serves all customers allocated to a server
+	 * Deallocates customers from servers if their serve time (time it takes to serve them) has been reached  
+	 */
 	public void serveAndFinishWithCustomers();
 	
-	//Returns all of the queues in the system 
+	/**
+	 * @return an ArrayList containing all queues in the system 
+	 */
 	public ArrayList<Queue> getQueues();
 	
+	/**
+	 * @return the ServerCollection object holding all servers in the system 
+	 */
 	public ServerCollection getServerCollection();
 	
+	/**
+	 * @return the Stats object that holds and calculates the simulation's statistics 
+	 */
 	public Stats getStats();
 	
 }

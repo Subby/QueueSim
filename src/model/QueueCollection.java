@@ -4,15 +4,15 @@ package model;
 import java.util.ArrayList;
 
 /**
- * Represents a collection of many different queues.
+ * Represents a collection of Queues 
  * @author Denver Fernandes
- *
+ * @author Ben Lawton 
  */
 
 public class QueueCollection {
 	
 	/**
-	 * The queues contained in this collection
+	 * The queues contained in the collection
 	 */
 	private ArrayList<Queue> queues;
 		
@@ -20,13 +20,15 @@ public class QueueCollection {
 		queues = new ArrayList<Queue>();
 	}
 	
+	/**
+	 * @return the ArrayList holding the queues 
+	 */
 	public ArrayList<Queue> getQueues() {
 		return queues;
 	}
 	
 	/**
-	 * Returns the shortest queue.
-	 * @return the shortest queue
+	 * @return the shortest queue in the collection 
 	 */
 	public Queue showShortestQueue() {
 		//TODO: Implement error handling for when the collection is empty 
@@ -44,7 +46,7 @@ public class QueueCollection {
 	
 	/**
 	 * Adds a new {@link Queue} to the collection.
-	 * @param queue the queue to add
+	 * @param the Queue to be added 
 	 */
 	public void addQueue(model.Queue queue) {
 		queues.add(queue);
