@@ -1,8 +1,11 @@
 package model;
+
 /**
- * The main class the runs the simulator.
+ * The class that runs the simulation 
  * @author Denver Fernandes
+ * @author Ben Lawton 
  */
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -89,7 +92,7 @@ public class Simulator {
 	 * @param run the flag
 	 */
 	public void setShouldRun(boolean run) {
-		shouldRun = run;
+		this.shouldRun = run;
 	}
 	
 	/**
@@ -111,7 +114,7 @@ public class Simulator {
 	 * @return the current QueueControlSystem implementation in use 
 	 */
 	public QueueControlSystem getQueueSystem() {
-		return selectedQueueSystem;
+		return this.selectedQueueSystem;
 	}
 	
 }
