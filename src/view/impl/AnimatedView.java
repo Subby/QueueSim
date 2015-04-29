@@ -48,8 +48,29 @@ public class AnimatedView extends JPanel implements SimulatorView {
     private Stats stats;
     
     private boolean simulatorRunning = false;
+    
+    public static void main(String[] args) {
+		final JFrame frame = new JFrame("Animated View");
+		frame.getContentPane().add(new AnimatedView());
+		frame.setSize(800, 275);
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setVisible(true);
+		frame.addWindowListener(new WindowAdapter() {
+			  public void windowClosing(WindowEvent e) {
+				  int confirm = JOptionPane.showOptionDialog(frame,
+		                    "Are you sure you want to exit the simulator?",
+		                    "Exit Confirmation", JOptionPane.YES_NO_OPTION,
+		                    JOptionPane.QUESTION_MESSAGE, null, null, null);
+		            if (confirm == JOptionPane.OK_OPTION) {
+		                System.exit(0);
+		            }
+			  }
+			});
+	}
 
 	public AnimatedView() {
+		
 		JPanel westPanel = new JPanel();
 		JPanel centerPanel = new JPanel();
 		JPanel southPanel = new JPanel();
@@ -77,11 +98,6 @@ public class AnimatedView extends JPanel implements SimulatorView {
         runBtn.addActionListener(new ActionListener() {
         	@Override
 			public void actionPerformed(ActionEvent e) {
-        		simulator.setShouldRun(true);
-        		simulator.setLengthOfSimulation((int)simulationLengthSlider.getValue());
-				simulator.main(null);
-				appenedToTextArea("Simulator running");
-				simulatorRunning = true;
 				if (queueingSystemChoices.getSelectedItem().toString().equals("Single Queue")) {
 					simulator.setSingleQueueControlSystem();
 					stats = simulator.getQueueSystem().getStats();
@@ -90,6 +106,11 @@ public class AnimatedView extends JPanel implements SimulatorView {
 					simulator.setMultiQueueControlSystem();
 					stats = simulator.getQueueSystem().getStats();
 				}
+        		simulator.setShouldRun(true);
+        		simulator.setLengthOfSimulation((int)simulationLengthSlider.getValue());
+				simulator.main(null);
+				appenedToTextArea("Simulator running");
+				simulatorRunning = true;
 				//TODO implement error-handling for if JComboBox isn't working 
 			}
          });
@@ -164,27 +185,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		add(centerPanel, BorderLayout.CENTER);
 		add(southPanel, BorderLayout.SOUTH);
 	}
-	
-	public static void main(String... args) {
-		final JFrame frame = new JFrame("Animated View");
-		frame.getContentPane().add(new AnimatedView());
-		frame.setSize(800, 275);
-		frame.setResizable(false);
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		frame.setVisible(true);
-		frame.addWindowListener(new WindowAdapter() {
-			  public void windowClosing(WindowEvent e) {
-				  int confirm = JOptionPane.showOptionDialog(frame,
-		                    "Are you sure you want to exit the simulator?",
-		                    "Exit Confirmation", JOptionPane.YES_NO_OPTION,
-		                    JOptionPane.QUESTION_MESSAGE, null, null, null);
-		            if (confirm == JOptionPane.OK_OPTION) {
-		                System.exit(0);
-		            }
-			  }
-			});
-	}
-	
+
 	/**
 	 * Appends a message to the output text area.
 	 * @param message the message to output.
