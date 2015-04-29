@@ -1,13 +1,11 @@
 package model;
 /**
- * 
+ * Class that loops over and acts on ShortOfTimeCustomers (removes them when queuedForTooLong)
  * @author Ben Lawton
- *
  */
 
 public class ShortOfTimeCustomerObserver implements UnhappyCustomerObserver {
 
-	//Constructor is private so that the class can't be instantiated at-will
 	public ShortOfTimeCustomerObserver() {}
 
 	/**

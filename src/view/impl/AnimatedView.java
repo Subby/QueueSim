@@ -108,7 +108,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
 				}
         		simulator.setShouldRun(true);
         		simulator.setLengthOfSimulation((int)simulationLengthSlider.getValue());
-				simulator.main(null);
+				simulator.run();
 				appenedToTextArea("Simulator running");
 				simulatorRunning = true;
 				//TODO implement error-handling for if JComboBox isn't working 

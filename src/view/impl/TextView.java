@@ -78,7 +78,7 @@ public class TextView implements SimulatorView {
 		}
 		simulator.setNumberOfServers(numOfservers);
 		simulator.setLengthOfSimulation(lenOfSimulation);
-        simulator.main(null);
+        simulator.run();
         System.out.println(stats.toString());
         
         System.out.println("Would you like the statistics to be saved to a text file (y - yes, default - no)?");
