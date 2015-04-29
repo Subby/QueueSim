@@ -1,15 +1,16 @@
 package model;
 
-
 import java.util.ArrayList;
+
 /**
  * Represents a collection of many Servers.
  * @author Denver Fernandes
  * @author Ben Lawton 
  */
+
 public class ServerCollection {
 	
-	//A collection of all of the different servers.
+	//A collection of the servers in the simulation 
 	private ArrayList<Server> servers;
 	
 	public ServerCollection() {
@@ -17,8 +18,8 @@ public class ServerCollection {
 	}
 	
 	/**
-	 * Returns all the available servers.
-	 * @return the available servers
+	 * Returns all available Servers.
+	 * @return the available Servers
 	 */
 	public ArrayList<Server> showAvailableServers() {
 		ArrayList<Server> localList = new ArrayList<Server>();
@@ -31,7 +32,7 @@ public class ServerCollection {
 	}
 	
 	/**
-	 * Increments timeServed for all Servers with an allocated Person
+	 * Increments timeServed for all Servers with an allocated Person(Customer)
 	 */
 	public void serveCustomers() {
 		if (servers.size() > 0) {
@@ -44,7 +45,7 @@ public class ServerCollection {
 	}
 	
 	/**
-	 * Finishes with the Servers' customers if their serving time has been reached
+	 * Deallocates customers from servers if their serve time (time it takes to serve them) has been reached 
 	 */
 	public void finishWithCustomers() {
 		if (servers.size() > 0) {
@@ -59,15 +60,16 @@ public class ServerCollection {
 		}
 	}
 	/**
-	 * Gets all the servers in this collection.
-	 * @return the servers in this collection
+	 * Returns all servers in the collection 
+	 * @return an ArrayList holding the servers in the collection 
 	 */
 	public ArrayList<Server> getServers() {
 		return servers;
 	}
 
 	/**
-	 * Adds a server to the collection 
+	 * Adds a server to the collection
+	 * @param the Server to be added  
 	 */
 	public void addServer(Server server) {
 		this.servers.add(server);
