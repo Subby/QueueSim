@@ -11,8 +11,7 @@ public class ComplainingCustomerObserver implements UnhappyCustomerObserver {
 	public ComplainingCustomerObserver() {}
 	
 	/**
-	 * Iterates all of the ComplainingCustomer instances in all of the queues in the simulation, increments their time spent in the queue by 1
-	 * and then doubles their ServeTime if they've been waiting in the queue for longer than their patience limit 
+	 * Iterates over ComplainingCustomer instances in all queues and doubles their serveTime PATIENCE_LIMIT has been exceeded 
 	 */
 	public void actOnInconveniencedCustomers(QueueControlSystem queueSystem) {
 		for (Queue queue : queueSystem.getQueues()) {

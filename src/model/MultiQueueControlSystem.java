@@ -1,6 +1,6 @@
 package model;
 /**
- * Class that handles the generation of queues, servers, customers and the interaction between them for the simlulation of a multi queue system
+ * Class that acts as "puppet master" for all of the moving pieces in the simulation 
  * @author Ben Lawton 
  * @author Denver Fernandes
  */
@@ -10,14 +10,18 @@ import java.util.ArrayList;
 
 public class MultiQueueControlSystem implements QueueControlSystem {
 	
+	//A collection of servers in the system
 	private ServerCollection servers;
 	
+	//A collection of queues in the system 
 	private QueueCollection queues; 
 	
+	//Factory responsible for the generation of Person types  
 	private PersonFactory personFactory;
 	
+	//Statistics for the simulation 
 	private Stats stats;
-			
+	
 	public MultiQueueControlSystem() {
 		servers = new ServerCollection();
 		queues = new QueueCollection();
@@ -26,8 +30,8 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	}
 	
 	/**
-	 * Generates the queues and servers with a given number of servers.
-	 * @param numServers the number of servers to use
+	 * Generates queues and servers
+	 * @param the number of queues and servers to be generated 
 	 */
 	public void generateQueuesAndServers(int numServers) {
 		for (int i = 0; i < numServers; i++) {
@@ -39,7 +43,10 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		}
 	}
 
-	//If a customer is generated, add it to the shortest queue 
+	/**
+	 * Calls the PersonFactory object's generatePerson() method, 
+	 * and if it generates a Person, adds them to the shortest queue 
+	 */
 	public void customerArrival() {
 		Person newPerson = personFactory.generatePerson();
 		if (newPerson != null) {
@@ -49,7 +56,9 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		}
 	}
 
-	//Allocates a customer to an available server from their allocated queues 
+	/**
+	 * Allocates customers to all available servers 
+	 */
 	public void allocateCustomersToServers() {
 		if (servers.showAvailableServers().size() > 0) {
 			for (Server server : servers.showAvailableServers()) {
@@ -62,7 +71,9 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		}
 	}
 	
-	//Removes customers from the servers if their serve time has been met or exceeded
+	/**
+	 * Serves all customers assigned to a server and then deallocates them if their serveTime has been exceeded 
+	 */
 	public void serveAndFinishWithCustomers() {
 		servers.serveCustomers();
 		int numBefore = servers.showAvailableServers().size();
@@ -74,15 +85,18 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 		}
 	}
 	
+	/**
+	 * @return the collection of servers  
+	 */
 	public ServerCollection getServerCollection() {
 		return this.servers;
 	}
 	
 	/**
-	 * Gets all the queues.
+	 * @return the queues in the system 
 	 */
 	public ArrayList<Queue> getQueues() {
-		return queues.getQueues();
+		return this.queues.getQueues();
 	}
 	
 	/**

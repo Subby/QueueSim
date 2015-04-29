@@ -6,9 +6,18 @@ package model;
 
 public interface Person {
 	
+	/**
+	 * Gives the Person a randomised serve time (time it takes to serve them) within a given range
+	 */
 	public void initialiseServeTime();
 	
+	/**
+	 * @return The Person's serve time (time it takes to serve them) 
+	 */
 	public int getServeTime();
 	
+	/**
+	 * Increments the time the Person has spent in the queue 
+	 */
 	public void incrementTimeSpentQueueing();
 }
