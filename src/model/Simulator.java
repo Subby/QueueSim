@@ -13,15 +13,23 @@ import java.util.concurrent.TimeUnit;
 public class Simulator {
 	
 	//Execution frequency for the simulation ticks
-	private int tick = 10;
-	//Number of servers to be used in the simulation
+	private int tick;
+	//Number of servers to be used in the simulation, set as default to 3 
 	private int numOfServers;
 	//Length of the simulation
 	private int lengthOfSimulation;
 	//Whether or not the simulation should still be running 
-	private boolean shouldRun = true;
+	private boolean shouldRun;
 	//The queue system used to manage the simulation's moving parts 
 	public QueueControlSystem selectedQueueSystem;
+	
+	public Simulator() {
+		//Initialise default values for the simulation
+		tick = 10;
+		numOfServers = 3;
+		shouldRun = true;
+		setSingleQueueControlSystem();
+	}
 	
 	public void run() {
 		

@@ -82,7 +82,6 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		JPanel queueTypePanel = new JPanel();
 				
 		final Simulator simulator = new Simulator();
-		simulator.setSingleQueueControlSystem();
         
         stats = simulator.getQueueSystem().getStats();
         
