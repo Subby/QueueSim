@@ -34,14 +34,15 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		
     private LabelledSlider simulationLengthSlider;
     
-    private Simulator simulator;
+    private static Simulator simulator;
     private Stats stats;
     
-    private boolean simulatorRunning = false;
-    
+    private boolean simulatorRunning;
+        
     public static void main(String[] args) {
     	final JFrame frame = new JFrame("Animated View");
-		frame.getContentPane().add(new AnimatedView());
+    	AnimatedView am = new AnimatedView();
+		frame.getContentPane().add(am);
     	frame.setSize(800, 275);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -59,7 +60,8 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		simulator = new Simulator();
         stats = simulator.getQueueSystem().getStats();
 		JButton runBtn = new JButton();
-		JButton cancelBtn = new JButton("Cancel");
+		JButton cancelBtn = new JButton();
+		JButton printBtn = new JButton();
 		simulationLengthSlider = new LabelledSlider("Simulation Lengeth (hours) : ", 1, 1, 10, 1);
 		String[] queuingSystemItems = {"Single Queue", "Multiple Queue"};
         queueingSystemChoices = new JComboBox<String>(queuingSystemItems);
@@ -75,6 +77,8 @@ public class AnimatedView extends JPanel implements SimulatorView {
         runBtn.setToolTipText("Run simulation");
         cancelBtn.setText("Cancel");
         cancelBtn.setToolTipText("Cancel simulation");
+        printBtn.setText("Print");
+        printBtn.setToolTipText("Print the simulation's results");
         simulationLengthSlider.setToolTipText("Set the length of the simulation (in hours)");
         queueingSystemChoices.setToolTipText("Select the queue system type");
         outputArea.setEditable(false);
@@ -112,8 +116,9 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		queueTypePanel.add(queuingSystemLabel, BorderLayout.NORTH);
 		queueTypePanel.add(queueingSystemChoices, BorderLayout.SOUTH);
 		centerPanel.add(outputAreaScroll);
-		buttonPanel.add(runBtn, BorderLayout.WEST);
-		buttonPanel.add(cancelBtn, BorderLayout.EAST);
+		buttonPanel.add(runBtn, BorderLayout.EAST);
+		buttonPanel.add(printBtn, BorderLayout.CENTER);
+		buttonPanel.add(cancelBtn, BorderLayout.WEST);
 		southPanel.add(buttonPanel, BorderLayout.SOUTH);
 		add(westPanel, BorderLayout.WEST);
 		add(centerPanel, BorderLayout.CENTER);
@@ -127,28 +132,32 @@ public class AnimatedView extends JPanel implements SimulatorView {
 		});
 		
 		cancelBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exitApp();
+			}
+		});
+		
+		printBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!simulatorRunning) {
-				appenedToTextArea("Please run the simulator before cancelling it");
-				return;
+						appenedToTextArea("You need to run the simulation before you can print something");
+						return;
 				}
 				simulator.setShouldRun(false);
 				simulatorRunning = false;
-				appenedToTextArea("Simulator stopped");
+				appenedToTextArea("Simulator stopped; your results:");
 				outputArea.append(outputSimulationStats());
 			}
 		});
 
-		
 		numOfServers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setServers();
 			}
         });
 	}
-		
-	// Helper methods to aid event handler functionality 
 	
+	// Helper methods to aid event handler functionality 
 	private void runSimulation() {
 		if (queueingSystemChoices.getSelectedItem().toString().equals("Single Queue")) {
 			simulator.setSingleQueueControlSystem();
@@ -159,9 +168,9 @@ public class AnimatedView extends JPanel implements SimulatorView {
 			stats = simulator.getQueueSystem().getStats();
 		}
 		simulator.setShouldRun(true);
+		appenedToTextArea("Simulator running");
 		simulator.setLengthOfSimulation((int)simulationLengthSlider.getValue());
 		simulator.run();
-		appenedToTextArea("Simulator running");
 		simulatorRunning = true;
 	}
 	
@@ -189,6 +198,10 @@ public class AnimatedView extends JPanel implements SimulatorView {
     	outputArea.append("\n");
     }
     
+    /**
+     * Returns the simulation statistics as a string 
+     * @return String containing statistics
+     */
 	@Override
 	public String outputSimulationStats() {
 		return stats.toString();
