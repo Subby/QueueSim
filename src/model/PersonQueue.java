@@ -33,6 +33,7 @@ public class PersonQueue implements Queue {
 	}
 	
 	/**
+	 * Gets the queue.
 	 * @return a LinkedList containing the people in the queue 
 	 */
 	@Override

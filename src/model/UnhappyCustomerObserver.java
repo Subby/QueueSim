@@ -9,7 +9,10 @@ package model;
 
 public interface UnhappyCustomerObserver {
 		
-	//Act if any of the customers have been waiting for longer than their patience limit can handle
+	/**
+	 * Act if any of the customers have been waiting for longer than their patience limit can handle.
+	 * @param queueSystem the {@link QueueControlSystem} to use
+	 */
 	public void actOnInconveniencedCustomers(QueueControlSystem queueSystem);
 	
 }

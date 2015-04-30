@@ -33,16 +33,19 @@ public interface QueueControlSystem {
 	public void serveAndFinishWithCustomers();
 	
 	/**
+	 * Gets all the queues.
 	 * @return an ArrayList containing all queues in the system 
 	 */
 	public ArrayList<Queue> getQueues();
 	
 	/**
+	 * Gets the {@link ServerCollection}
 	 * @return the ServerCollection object holding all servers in the system 
 	 */
 	public ServerCollection getServerCollection();
 	
 	/**
+	 * Gets the {@link Stats} object.
 	 * @return the Stats object that holds and calculates the simulation's statistics 
 	 */
 	public Stats getStats();

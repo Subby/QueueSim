@@ -86,6 +86,7 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	}
 	
 	/**
+	 * Gets the collection of servers.
 	 * @return the collection of servers  
 	 */
 	public ServerCollection getServerCollection() {
@@ -93,6 +94,7 @@ public class MultiQueueControlSystem implements QueueControlSystem {
 	}
 	
 	/**
+	 * Gets all the {@link Queue} elements in this collection.
 	 * @return the queues in the system 
 	 */
 	public ArrayList<Queue> getQueues() {

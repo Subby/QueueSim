@@ -28,7 +28,9 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		stats = new Stats();
 	}
 	
-	//Generates the servers for the simulation 
+	/**
+	 * Generates the queues and the servers.
+	 */
 	public void generateQueuesAndServers(int numServers) {
 		for (int i = 0; i < numServers; i++) {
 			Server server = new HumanServer();
@@ -36,7 +38,9 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		}
 	}
 	
-	//If a customer is generated, adds it to the queue 
+	/**
+	 * If a customer has been generated, adds it to the queue.
+	 */
 	public void customerArrival() {
 		Person newPerson = personFactory.generatePerson();
 		if (newPerson != null) {
@@ -45,7 +49,9 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		}
 	}
 	
-	//Allocate a customer to all available servers 
+	/**
+	 * Allocates customers to available servers.
+	 */
 	public void allocateCustomersToServers() {
 		if (servers.showAvailableServers().size() > 0) {
 			for (Server server : servers.showAvailableServers()) {
@@ -58,7 +64,9 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		}
 	}
 	
-	//Remove customers from the servers if their serve time has bee exceeded 
+	/**
+	 * Removes customers from the servers if their serve time has been exceeded.
+	 */
 	public void serveAndFinishWithCustomers() {
 		servers.serveCustomers();
 		int numBefore = servers.showAvailableServers().size();
@@ -70,12 +78,20 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 		}
 	}
 
+	/**
+	 * Gets the {@link Queue} elements.
+	 * @return the queues
+	 */
 	public ArrayList<Queue> getQueues() {
 		ArrayList<Queue> queueList = new ArrayList<Queue>();
 		queueList.add(queue);
 		return queueList; 
 	}
 
+	/**
+	 * Gets the server collection
+	 * @return the server collection
+	 */
 	@Override
 	public ServerCollection getServerCollection() {
 		return this.servers;
@@ -83,6 +99,7 @@ public class SingleQueueControlSystem implements QueueControlSystem {
 	
 	/**
 	 * Gets the {@link Stats} instance.
+	 * @return the stats instance
 	 */
 	public Stats getStats() {
 		return this.stats;

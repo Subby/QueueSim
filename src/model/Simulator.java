@@ -106,27 +106,31 @@ public class Simulator {
 		this.shouldRun = run;
 	}
 	
+	/**
+	 * Whether the simulator should run.
+	 * @return flag indicating whether the simulator should run
+	 */
 	public boolean getShouldRun() {
 		return this.shouldRun;
 	}
 	
 	/**
-	 * Assigns the simulator a control system for a single queue simulation 
+	 * Assigns the simulator a control system for a single queue simulation.
 	 */
 	public void setSingleQueueControlSystem() {
 		this.selectedQueueSystem = new SingleQueueControlSystem();
 	}
 	
 	/**
-	 * Assigns the simulator a control system for a multiple queue simulation 
+	 * Assigns the simulator a control system for a multiple queue simulation.
 	 */
 	public void setMultiQueueControlSystem() {
 		this.selectedQueueSystem = new MultiQueueControlSystem();
 	}
 	
 	/**
-	 * Returns the currently assigned control system for the simulation 
-	 * @return the current QueueControlSystem implementation in use 
+	 * Returns the currently assigned control system for the simulation. 
+	 * @return the current {@link QueueControlSystem} implementation in use 
 	 */
 	public QueueControlSystem getQueueSystem() {
 		return this.selectedQueueSystem;

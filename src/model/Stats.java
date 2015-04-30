@@ -95,6 +95,9 @@ public class Stats {
 		}
 	}
 	
+	/**
+	 * Converts all the statistics to a formatted {@link String}.
+	 */
 	public String toString() {
 		StringBuilder strBlr = new StringBuilder();
 		strBlr.append("Average waiting time: " + getAvgWaitingTime());

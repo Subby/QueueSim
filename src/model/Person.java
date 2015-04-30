@@ -12,6 +12,7 @@ public interface Person {
 	public void initialiseServeTime();
 	
 	/**
+	 * Gets the serve time of a person.
 	 * @return The Person's serve time (time it takes to serve them) 
 	 */
 	public int getServeTime();

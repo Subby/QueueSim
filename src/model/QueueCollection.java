@@ -21,6 +21,7 @@ public class QueueCollection {
 	}
 	
 	/**
+	 * Gets the queues in the collection.
 	 * @return the ArrayList holding the queues 
 	 */
 	public ArrayList<Queue> getQueues() {
@@ -28,7 +29,8 @@ public class QueueCollection {
 	}
 	
 	/**
-	 * @return the shortest queue in the collection 
+	 * Returns the shortest  {@link Queue}
+	 * @return the shortest {@link Queue} in the collection 
 	 */
 	public Queue showShortestQueue() {
 		//TODO: Implement error handling for when the collection is empty 

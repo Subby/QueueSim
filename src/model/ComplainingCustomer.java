@@ -19,17 +19,25 @@ public class ComplainingCustomer extends UnhappyCustomer {
 		isDoubled = false;
 	}
 	
-	//Increases time spent queueing by one tick 
+	/**
+	 * Increases the time spent queueing.
+	 */
 	public void incrementTimeSpentQueueing() {
 		this.timeSpentQueueing++;
 	}
 	
-	//Returns the time spent queueing
+	/**
+	 * Gets the time spent queueing.
+	 * @return the time spent queueing
+	 */
 	public int getTimeSpentQueueing() {
 		return this.timeSpentQueueing;
 	}
 	
-	//If the time spent queueing is greater than the patience limit, double serving time
+	/**
+	 * Checks whether the customer is unhappy.
+	 * @return whether the customer has queued for too long and is unhappy
+	 */
 	public boolean queuedForTooLong() {
 		boolean unhappy = false;
 		if (timeSpentQueueing >= PATIENCE_LIMIT && isDoubled == false) {
@@ -51,6 +59,7 @@ public class ComplainingCustomer extends UnhappyCustomer {
 	
 	/**
 	 * Gets the patience limit for this type of customer.
+	 * @return the patience limit
 	 */
 	public int getPatienceLimit() {
 		return PATIENCE_LIMIT;
