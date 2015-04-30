@@ -10,6 +10,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import view.impl.AnimatedView;
+
 public class Simulator {
 	
 	//Execution frequency for the simulation ticks
@@ -21,7 +23,7 @@ public class Simulator {
 	//Whether or not the simulation should still be running 
 	private boolean shouldRun;
 	//The queue system used to manage the simulation's moving parts 
-	public QueueControlSystem selectedQueueSystem;
+	private QueueControlSystem selectedQueueSystem;
 	
 	public Simulator() {
 		//Initialise default values for the simulation
@@ -49,17 +51,18 @@ public class Simulator {
     		int currentTime = 0;
         	
 			public void run() {
+				
 				if(!shouldRun) {
 					ticker.shutdown();
-					return;
-				}
+					setShouldRun(false);
+					}
 				
 				if(currentTime < lengthOfSimulation) {
 					currentTime = currentTime + 1;
 				} else {
 					ticker.shutdown();
+					setShouldRun(false);
 					System.out.println("Simulator stopped.");
-					return;
 				}
 				
 				selectedQueueSystem.customerArrival();
@@ -103,6 +106,10 @@ public class Simulator {
 		this.shouldRun = run;
 	}
 	
+	public boolean getShouldRun() {
+		return this.shouldRun;
+	}
+	
 	/**
 	 * Assigns the simulator a control system for a single queue simulation 
 	 */
@@ -124,6 +131,5 @@ public class Simulator {
 	public QueueControlSystem getQueueSystem() {
 		return this.selectedQueueSystem;
 	}
-	
 }
 
