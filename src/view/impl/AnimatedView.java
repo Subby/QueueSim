@@ -157,7 +157,7 @@ public class AnimatedView extends JPanel implements SimulatorView {
 				simulator.setShouldRun(false);
 				simulatorRunning = false;
 				appenedToTextArea("Simulator stopped");
-				outputArea.append(outputSimulationStats());
+				appenedToTextArea(outputSimulationStats());
 			}
         });
         
