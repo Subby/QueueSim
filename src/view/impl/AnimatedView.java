@@ -1,35 +1,26 @@
 package view.impl;
+
+//Import application packages
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+import model.*;
+import view.*;
+import view.components.LabelledSlider;
+
 /**
  * The GUI for the simulation.
  * @author Tony Ung
  * @author Denver Fernandes
  * @author Ben Lawton
  */
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-
-import model.Simulator;
-import model.Stats;
-import view.SimulatorView;
-import view.components.LabelledSlider;
-
 
 public class AnimatedView extends JPanel implements SimulatorView {
 	
 	private static final long serialVersionUID = -34020607785964557L;
+	
+	private JFrame frame;
 	
 	private JLabel queuingSystemLabel;
 	private JComboBox<String> queueingSystemChoices;
@@ -71,15 +62,55 @@ public class AnimatedView extends JPanel implements SimulatorView {
 
 	public AnimatedView() {
 		
-		JPanel westPanel = new JPanel();
-		JPanel centerPanel = new JPanel();
-		JPanel southPanel = new JPanel();
-		
-		JPanel buttonPanel = new JPanel();
-		JPanel sliderPanel = new JPanel();
-		JPanel comboPanel = new JPanel();
-		JPanel serverPanel = new JPanel();
-		JPanel queueTypePanel = new JPanel();
+		// Create the components 
+		JButton runBtn = new JButton();
+		JButton cancelBtn = new JButton("Cancel");
+		simulationLengthSlider = new LabelledSlider("Simulation Lengeth (hours) : ", 1, 1, 10, 1);
+		String[] queuingSystemItems = {"Single Queue", "Multiple Queue"};
+        queueingSystemChoices = new JComboBox<String>(queuingSystemItems);
+        JTextArea outputArea = new JTextArea(13, 23);
+        JScrollPane outputAreaScroll = new JScrollPane();
+        Integer[] numOfServersItems = {3, 4, 5, 6};
+        numOfServersLabel = new JLabel ("Number of Servers");
+        numOfServers = new JComboBox<Integer>(numOfServersItems);
+        
+        // Set the properties of the components 
+        runBtn.setText("Run");
+        runBtn.setToolTipText("Run simulation");
+        cancelBtn.setText("Cancel");
+        cancelBtn.setToolTipText("Cancel simulation");
+        simulationLengthSlider.setToolTipText("Set the length of the simulation (in hours)");
+        queueingSystemChoices.setToolTipText("Select the queue system type");
+        outputArea.setEditable(false);
+        outputAreaScroll.setViewportView(outputArea);
+        numOfServers.setSize(new Dimension(20, 20));
+        
+        // Create containers to hold the components
+        frame = new JFrame("Animated View");
+        JPanel westPanel = new JPanel();
+        JPanel centerPanel = new JPanel();
+        JPanel southPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
+        JPanel sliderPanel = new JPanel();
+        JPanel comboPanel = new JPanel();
+        JPanel serverPanel = new JPanel();
+        JPanel queueTypePanel = new JPanel();
+        
+        // Specify LayoutManagers
+        frame.getContentPane().add(new AnimatedView());
+        setLayout(new BorderLayout());
+        sliderPanel.setLayout(new BorderLayout());
+        comboPanel.setLayout(new BorderLayout());
+        westPanel.setLayout(new BorderLayout());
+        serverPanel.setLayout(new BorderLayout());
+        queueTypePanel.setLayout(new BorderLayout());
+        buttonPanel.setLayout(new BorderLayout());
+        southPanel.setLayout(new BorderLayout());
+        
+        // Add components to the containers
+        sliderPanel.add(simulationLengthSlider, BorderLayout.NORTH);
+        comboPanel.add(serverPanel, BorderLayout.NORTH);
+        
 				
 		final Simulator simulator = new Simulator();
         
